@@ -2,7 +2,7 @@
 layout: page
 ---
 
-<img src="/assets/images/vagrant.png" alt="vagrant" width="280px">
+<img src="/assets/images/vagrant.png" alt="vagrant" width="15%">
 
 <hr/>
 
