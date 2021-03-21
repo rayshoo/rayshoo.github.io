@@ -1,8 +1,8 @@
 ---
-layout: page2
+layout: page
 ---
 
-<img src="../assets/images/windows.png" alt="vagrant" width="40%">
+<img src="https://rayshoo.github.io/assets/images/windows.png" alt="vagrant" width="40%">
 
 <hr/>
 
