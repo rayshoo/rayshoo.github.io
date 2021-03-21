@@ -1,0 +1,235 @@
+# [Main](../../README.md) / [Return](index.md)
+
+<img src="../../image/kubernetes.png" alt="kubernetes" width="40%">
+
+<hr/>
+
+## Pod
+
+도움말
+```sh
+$ kubectl explain pods
+$ kubectl explain pods.metadata
+$ kubectl explain pods.metadata.annotations
+$ kubectl explain pods --recursive
+```
+
+조회
+```sh
+# 일반 출력
+$ kubectl get pods
+
+# 자세히 출력
+$ kubectl get pods -o wide
+
+# json, yaml 형식 출력
+$ kubectl get pods -o json
+$ kubectl get pods -o yaml
+
+# 출력 주시
+$ kubectl get pods -w
+
+# 모든 네임스페이스 pod 조회
+$ kubectl get pods --all-namespaces
+# 특정 네임스페이스 pod 조회
+$ kubectl get pods -n [namespace name]
+$ kubectl get pods -n kube-system
+```
+
+정보
+```sh
+# 조회
+$ kubectl describe pod [name]
+
+# 수정
+$ kubectl edit pod [name]
+
+```
+
+로그
+
+```sh
+kubectl logs [pod name]
+```
+
+단일 컨테이너 pod 실행
+```sh
+$ kubectl run [name] --image=[image] --port=[port]
+$ kubectl run nginx --image=nginx --port=80
+
+// echoserver pod 생성, 서비스 생성
+$ kubectl run echoserver --image="k8s.gcr.io/echoserver:1.10" --port=8080
+$ kubectl expose pod echoserver --type=NodePort
+$ kubectl get pods
+```
+
+컨테이너 접속
+```sh
+$ kubectl exec -it [pod name] sh
+$ kubectl exec -it [pod name] /bin/bash
+
+# 접속해서 서비스 포트에 curl, -s 는 불필요한 정보 삭제해서 출력
+$ kubectl exec [pod name] -- curl [svc cluster ip]:port -s
+```
+
+삭제
+```sh
+$ kubectl delete pod [name]
+```
+<hr/>
+
+기본 탬플릿
+
+```yaml
+# pod-sample.yaml
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kubernetes-simple-pod
+  labels:
+    app: kubernetes-simple-pod
+spec:
+  containers:
+    - name: kubernetes-simple-pod
+      image: arisu1000/simple-container-app:latest
+      ports:
+        - containerPort: 8080
+```
+
+yaml 적용
+```sh
+$ kubectl apply -f pod-sample.yaml
+```
+
+기본 탬플릿 생성
+```sh
+$ kubectl run nginx --image=nginx --port=80 --dry-run=client -o yaml > abc.yaml
+```
+
+<hr/>
+컨테이너가 실행 된 후에 kubelet가 컨테이너를 주기적으로 진단, 이때 probe를 제공하면 다음과 같은 효과를 볼 수 있음
+<br/><br/>
+livenessProbe : 컨테이너가 실행됐는지 확인 / 실패 시 종료 후 재시작<br/>
+readinessProbe : 실제로 서비스 요청에 응답할 수 있는지 진단 / 실패 시, 연결 끊음
+
+<hr/>
+
+**초기화 컨테이너**
+앱 컨테이너 실행 전에 별도의 작업을 지시하기 위해 사용하는 컨테이너
+초기화 컨테이너는 readinessprobe를 지원안함
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kubernetes-simple-pod
+  labels:
+    app: kubernetes-simple-pod
+spec:
+  initContainers:
+  - name: init-myservice
+    image: arisu1000/simple-container-app:latest
+    command: ['sh', '-c', 'sleep 2; echo helloworld01;']
+  - name: init-mydb
+    image: arisu1000/simple-container-app:latest
+    command: ['sh', '-c', 'sleep 2; echo helloworld02;']
+  containers:
+  - name: kubernetes-simple-pod 
+    image: arisu1000/simple-container-app:latest
+    command: ['sh', '-c', 'echo The app is running! && sleep 3600']
+```
+
+<hr/>
+
+**pause 컨테이너**
+
+모든 파드마다 기본으로 실행되는 컨테이너로 pause 컨테이너가 제공하는 네트워크를 공유함. 따라서 pause 컨테이너가 재시작되면 파드 안의 모든 컨테이너도 같이 재시작된다.
+--pod-infra-container-image 옵션으로 다른 컨테이너를 pause컨테이너로 지정 가능
+
+<hr/>
+
+**static 파드**
+
+kube-apiserver를 통하지 않고 kubelet이 직접 실행하는 pods
+kubelet 설정의 --pod-manifest-path라는 옵션에 지정한 경로의 파드들을 kubelet이 감지해서 스태틱 파드로 실행한다. 이상이 생길 시에 자동으로 재시작하고 실행 중인 노드에서만 실행되고 다른 노드에는 실행되지 않는다.
+kube-apiserver로 조회만 가능하다. 보통 kube-apiserver, etcd와 같은 시스템 pod들을 실행하는 용도로 사용됨.
+
+static pod의 경로 : /etc/kubernetes/manifests
+```sh
+$ kubectl describe pods kube-apiserver-$(hostname) -n kube-system
+```
+
+<hr/>
+
+**cpu, 메모리 할당**
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kubernetes-simple-pod
+  labels:
+    app: kubernetes-simple-pod
+spec:
+  containers:
+  - name: kubernetes-simple-pod
+    image: arisu1000/simple-container-app:latest
+    resources:
+      requests:
+        cpu: 0.1
+        memory: 200M
+      limits:
+        cpu: 0.5
+        memory: 1G
+    ports:
+    - containerPort: 8080
+```
+
+<hr/>
+
+**환경 변수 설정**
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kubernetes-simple-pod
+  labels:
+    app: kubernetes-simple-pod
+spec:
+  containers:
+  - name: kubernetes-simple-pod
+    image: arisu1000/simple-container-app:latest
+    ports:
+    - containerPort: 8080
+    env:
+    - name: TESTENV01
+      value: "testvalue01"
+    - name: HOSTNAME
+      valueFrom:
+        fieldRef:
+          fieldPath: spec.nodeName
+    - name: POD_NAME
+      valueFrom:
+        fieldRef:
+          fieldPath: metadata.name
+    - name: POD_IP
+      valueFrom:
+        fieldRef:
+          fieldPath: status.podIP
+    - name: CPU_REQUEST
+      valueFrom:
+        resourceFieldRef:
+          containerName: kubernetes-simple-pod
+          resource: requests.cpu
+    - name: CPU_LIMIT
+      valueFrom:
+        resourceFieldRef:
+          containerName: kubernetes-simple-pod
+          resource: limits.cpu          
+```
+
+<hr/>
+
+**github.com/rayshoo**

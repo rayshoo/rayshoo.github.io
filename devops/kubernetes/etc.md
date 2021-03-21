@@ -1,0 +1,45 @@
+# [Main](../../README.md) / [Return](index.md)
+
+<img src="../../image/kubernetes.png" alt="kubernetes" width="40%">
+
+<hr/>
+
+## etc
+
+k8s bash completion : bash-completion 설치 후 .bashrc에 다음을 입력
+```
+source <(kubectl completion bash)
+alias k=kubectl
+complete -F __start_kubectl k
+```
+
+노드 IP주소 조회([jq설치](https://stedolan.github.io/jq/download/) 필요)
+```sh
+kubectl get nodes -o json | jq -r '.items[].status.addresses[] | select(.type=="InternalIP") | .address'
+```
+
+노드 정보 json, yaml형식으로 출력해서 vim 편집기로 보기
+```sh
+kubectl get nodes -o json | vim -c 'set ft=json' -
+kubectl get nodes -o yaml | vim -c 'set ft=yaml' -
+```
+
+[gron](https://github.com/tomnomnom/gron)으로 JSON구조 파악해서 JSONPath에 인자로 전달할 값을 찾기
+```sh
+kubectl get pods [podname] -o json | gron
+```
+
+[yq](https://mikefarah.gitbook.io/yq/)로 출력 색깔로 보기
+```sh
+VERSION=v4.2.0
+BINARY=yq_linux_amd64
+
+wget https://github.com/mikefarah/yq/releases/download/${VERSION}/${BINARY}.tar.gz -O - |\
+  tar xz && sudo mv ${BINARY} /usr/bin/yq
+
+kubectl get nodes -o yaml | yq e
+```
+
+<hr/>
+
+**github.com/rayshoo**
