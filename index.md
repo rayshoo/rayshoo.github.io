@@ -19,7 +19,7 @@ layout: default
 			<span class="icon fa-commenting"></span>
 			<div class="content">
 				<h3>Language</h3>
-				<p>컴퓨터 언어에는 다양한 종류가 있고, 저마다의 특장점이 있습니다. 하나의 언어를 잘 익혀놓으면 다른 언어를 배우는것이 크게 어렵지 않기에 여러 언어를 익히며 그 언어의 생태계를 접해보았습니다.(VB,Lua,C++,HTML5,CSS3,Java,Javascript,Python,Ruby,YAML)</p>
+				<p>컴퓨터 언어에는 다양한 종류가 있고, 저마다의 특장점이 있습니다. 하나의 언어를 잘 익혀놓으면 다른 언어를 배우는것이 크게 어렵지 않기에 여러 언어를 익히며 그 언어의 생태계를 접해보았습니다.(VB, Lua, C++, HTML5, CSS3, Java, Javascript, Python, Ruby, YAML)</p>
 			</div>
 		</article>
 		<article>
@@ -33,7 +33,7 @@ layout: default
 			<span class="icon fa-html5"></span>
 			<div class="content">
 				<h3>Web Application</h3>
-				<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+				<p>웹 개발로 커리어를 시작했기때문에 웹 개발 지식을 가지고 있는 엔지니어라고 할 수 있겠습니다. 자신의 영역만이 아닌 프론트엔드부터 백엔드를 넘어 서버 인프라에 이르기까지 고객에게 서비스가 전달되는 모든 과정을 포괄적으로 습득하려는 자세를 이어 나가고자 합니다.</p>
 			</div>
 		</article>
 	</div>

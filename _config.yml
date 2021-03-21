@@ -6,12 +6,9 @@ description: Brian Choi의 블로그에 오신것을 환영합니다
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "rayshoo.github.io" # the base hostname & protocol for your site
 author: Brian Choi
-street_address: 
-city: Seoul
-state: 
-zip_code: 
 country: Republic of Korea
 phone:
+slack: rayshoo92@gmail.com
 
 # Images
 kubernetes_image_url: "http://rayshoo.test/assets/images/kubernetes.png"
