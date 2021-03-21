@@ -1,0 +1,382 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+  <title>Brian의 블로그</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie9.css" /><![endif]-->
+  <!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
+</head>
+
+
+<body>
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Main -->
+        <div id="main">
+            <div class="inner">
+
+                <!-- Header -->
+  <header id="header">
+    <a href="/" class="logo"><strong>Blog</strong> by Brian</a>
+    <ul class="icons">
+      
+      
+      
+      
+      
+      
+      
+      
+      <li><a href="https://github.com/rayshoo" class="icon fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+      
+      
+      
+    </ul>
+  </header>
+
+
+                <!-- Content -->
+                <section>
+                	<header class="main">
+                		<h1></h1>
+                	</header>
+
+                  
+
+                <p><img src="/assets/images/kubernetes.png" alt="kubernetes" width="400px" /></p>
+
+<hr />
+
+<h2 id="pod">Pod</h2>
+
+<p>도움말</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>kubectl explain pods
+<span class="nv">$ </span>kubectl explain pods.metadata
+<span class="nv">$ </span>kubectl explain pods.metadata.annotations
+<span class="nv">$ </span>kubectl explain pods <span class="nt">--recursive</span>
+</code></pre></div></div>
+
+<p>조회</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 일반 출력</span>
+<span class="nv">$ </span>kubectl get pods
+
+<span class="c"># 자세히 출력</span>
+<span class="nv">$ </span>kubectl get pods <span class="nt">-o</span> wide
+
+<span class="c"># json, yaml 형식 출력</span>
+<span class="nv">$ </span>kubectl get pods <span class="nt">-o</span> json
+<span class="nv">$ </span>kubectl get pods <span class="nt">-o</span> yaml
+
+<span class="c"># 출력 주시</span>
+<span class="nv">$ </span>kubectl get pods <span class="nt">-w</span>
+
+<span class="c"># 모든 네임스페이스 pod 조회</span>
+<span class="nv">$ </span>kubectl get pods <span class="nt">--all-namespaces</span>
+<span class="c"># 특정 네임스페이스 pod 조회</span>
+<span class="nv">$ </span>kubectl get pods <span class="nt">-n</span> <span class="o">[</span>namespace name]
+<span class="nv">$ </span>kubectl get pods <span class="nt">-n</span> kube-system
+</code></pre></div></div>
+
+<p>정보</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 조회</span>
+<span class="nv">$ </span>kubectl describe pod <span class="o">[</span>name]
+
+<span class="c"># 수정</span>
+<span class="nv">$ </span>kubectl edit pod <span class="o">[</span>name]
+
+</code></pre></div></div>
+
+<p>로그</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl logs <span class="o">[</span>pod name]
+</code></pre></div></div>
+
+<p>단일 컨테이너 pod 실행</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>kubectl run <span class="o">[</span>name] <span class="nt">--image</span><span class="o">=[</span>image] <span class="nt">--port</span><span class="o">=[</span>port]
+<span class="nv">$ </span>kubectl run nginx <span class="nt">--image</span><span class="o">=</span>nginx <span class="nt">--port</span><span class="o">=</span>80
+
+// echoserver pod 생성, 서비스 생성
+<span class="nv">$ </span>kubectl run echoserver <span class="nt">--image</span><span class="o">=</span><span class="s2">"k8s.gcr.io/echoserver:1.10"</span> <span class="nt">--port</span><span class="o">=</span>8080
+<span class="nv">$ </span>kubectl expose pod echoserver <span class="nt">--type</span><span class="o">=</span>NodePort
+<span class="nv">$ </span>kubectl get pods
+</code></pre></div></div>
+
+<p>컨테이너 접속</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>kubectl <span class="nb">exec</span> <span class="nt">-it</span> <span class="o">[</span>pod name] sh
+<span class="nv">$ </span>kubectl <span class="nb">exec</span> <span class="nt">-it</span> <span class="o">[</span>pod name] /bin/bash
+
+<span class="c"># 접속해서 서비스 포트에 curl, -s 는 불필요한 정보 삭제해서 출력</span>
+<span class="nv">$ </span>kubectl <span class="nb">exec</span> <span class="o">[</span>pod name] <span class="nt">--</span> curl <span class="o">[</span>svc cluster ip]:port <span class="nt">-s</span>
+</code></pre></div></div>
+
+<p>삭제</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>kubectl delete pod <span class="o">[</span>name]
+</code></pre></div></div>
+<hr />
+
+<p>기본 탬플릿</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># pod-sample.yaml</span>
+<span class="nn">---</span>
+<span class="na">apiVersion</span><span class="pi">:</span> <span class="s">v1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">Pod</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">kubernetes-simple-pod</span>
+  <span class="na">labels</span><span class="pi">:</span>
+    <span class="na">app</span><span class="pi">:</span> <span class="s">kubernetes-simple-pod</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">containers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">kubernetes-simple-pod</span>
+      <span class="na">image</span><span class="pi">:</span> <span class="s">arisu1000/simple-container-app:latest</span>
+      <span class="na">ports</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="na">containerPort</span><span class="pi">:</span> <span class="m">8080</span>
+</code></pre></div></div>
+
+<p>yaml 적용</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>kubectl apply <span class="nt">-f</span> pod-sample.yaml
+</code></pre></div></div>
+
+<p>기본 탬플릿 생성</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>kubectl run nginx <span class="nt">--image</span><span class="o">=</span>nginx <span class="nt">--port</span><span class="o">=</span>80 <span class="nt">--dry-run</span><span class="o">=</span>client <span class="nt">-o</span> yaml <span class="o">&gt;</span> abc.yaml
+</code></pre></div></div>
+
+<hr />
+
+<p>컨테이너가 실행 된 후에 kubelet가 컨테이너를 주기적으로 진단, 이때 probe를 제공하면 다음과 같은 효과를 볼 수 있음
+<br /><br />
+livenessProbe : 컨테이너가 실행됐는지 확인 / 실패 시 종료 후 재시작<br />
+readinessProbe : 실제로 서비스 요청에 응답할 수 있는지 진단 / 실패 시, 연결 끊음</p>
+
+<hr />
+
+<p><strong>초기화 컨테이너</strong>
+앱 컨테이너 실행 전에 별도의 작업을 지시하기 위해 사용하는 컨테이너
+초기화 컨테이너는 readinessprobe를 지원안함</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">v1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">Pod</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">kubernetes-simple-pod</span>
+  <span class="na">labels</span><span class="pi">:</span>
+    <span class="na">app</span><span class="pi">:</span> <span class="s">kubernetes-simple-pod</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">initContainers</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">init-myservice</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">arisu1000/simple-container-app:latest</span>
+    <span class="na">command</span><span class="pi">:</span> <span class="pi">[</span><span class="s1">'</span><span class="s">sh'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">-c'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">sleep</span><span class="nv"> </span><span class="s">2;</span><span class="nv"> </span><span class="s">echo</span><span class="nv"> </span><span class="s">helloworld01;'</span><span class="pi">]</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">init-mydb</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">arisu1000/simple-container-app:latest</span>
+    <span class="na">command</span><span class="pi">:</span> <span class="pi">[</span><span class="s1">'</span><span class="s">sh'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">-c'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">sleep</span><span class="nv"> </span><span class="s">2;</span><span class="nv"> </span><span class="s">echo</span><span class="nv"> </span><span class="s">helloworld02;'</span><span class="pi">]</span>
+  <span class="na">containers</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">kubernetes-simple-pod</span> 
+    <span class="na">image</span><span class="pi">:</span> <span class="s">arisu1000/simple-container-app:latest</span>
+    <span class="na">command</span><span class="pi">:</span> <span class="pi">[</span><span class="s1">'</span><span class="s">sh'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">-c'</span><span class="pi">,</span> <span class="s1">'</span><span class="s">echo</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">app</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">running!</span><span class="nv"> </span><span class="s">&amp;&amp;</span><span class="nv"> </span><span class="s">sleep</span><span class="nv"> </span><span class="s">3600'</span><span class="pi">]</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong>pause 컨테이너</strong></p>
+
+<p>모든 파드마다 기본으로 실행되는 컨테이너로 pause 컨테이너가 제공하는 네트워크를 공유함. 따라서 pause 컨테이너가 재시작되면 파드 안의 모든 컨테이너도 같이 재시작된다.
+–pod-infra-container-image 옵션으로 다른 컨테이너를 pause컨테이너로 지정 가능</p>
+
+<hr />
+
+<p><strong>static 파드</strong></p>
+
+<p>kube-apiserver를 통하지 않고 kubelet이 직접 실행하는 pods
+kubelet 설정의 –pod-manifest-path라는 옵션에 지정한 경로의 파드들을 kubelet이 감지해서 스태틱 파드로 실행한다. 이상이 생길 시에 자동으로 재시작하고 실행 중인 노드에서만 실행되고 다른 노드에는 실행되지 않는다.
+kube-apiserver로 조회만 가능하다. 보통 kube-apiserver, etcd와 같은 시스템 pod들을 실행하는 용도로 사용됨.</p>
+
+<p>static pod의 경로 : /etc/kubernetes/manifests</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>kubectl describe pods kube-apiserver-<span class="si">$(</span><span class="nb">hostname</span><span class="si">)</span> <span class="nt">-n</span> kube-system
+</code></pre></div></div>
+
+<hr />
+
+<p><strong>cpu, 메모리 할당</strong></p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">v1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">Pod</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">kubernetes-simple-pod</span>
+  <span class="na">labels</span><span class="pi">:</span>
+    <span class="na">app</span><span class="pi">:</span> <span class="s">kubernetes-simple-pod</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">containers</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">kubernetes-simple-pod</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">arisu1000/simple-container-app:latest</span>
+    <span class="na">resources</span><span class="pi">:</span>
+      <span class="na">requests</span><span class="pi">:</span>
+        <span class="na">cpu</span><span class="pi">:</span> <span class="m">0.1</span>
+        <span class="na">memory</span><span class="pi">:</span> <span class="s">200M</span>
+      <span class="na">limits</span><span class="pi">:</span>
+        <span class="na">cpu</span><span class="pi">:</span> <span class="m">0.5</span>
+        <span class="na">memory</span><span class="pi">:</span> <span class="s">1G</span>
+    <span class="na">ports</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">containerPort</span><span class="pi">:</span> <span class="m">8080</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><strong>환경 변수 설정</strong></p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">v1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">Pod</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">kubernetes-simple-pod</span>
+  <span class="na">labels</span><span class="pi">:</span>
+    <span class="na">app</span><span class="pi">:</span> <span class="s">kubernetes-simple-pod</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">containers</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">kubernetes-simple-pod</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">arisu1000/simple-container-app:latest</span>
+    <span class="na">ports</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">containerPort</span><span class="pi">:</span> <span class="m">8080</span>
+    <span class="na">env</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">TESTENV01</span>
+      <span class="na">value</span><span class="pi">:</span> <span class="s2">"</span><span class="s">testvalue01"</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">HOSTNAME</span>
+      <span class="na">valueFrom</span><span class="pi">:</span>
+        <span class="na">fieldRef</span><span class="pi">:</span>
+          <span class="na">fieldPath</span><span class="pi">:</span> <span class="s">spec.nodeName</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">POD_NAME</span>
+      <span class="na">valueFrom</span><span class="pi">:</span>
+        <span class="na">fieldRef</span><span class="pi">:</span>
+          <span class="na">fieldPath</span><span class="pi">:</span> <span class="s">metadata.name</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">POD_IP</span>
+      <span class="na">valueFrom</span><span class="pi">:</span>
+        <span class="na">fieldRef</span><span class="pi">:</span>
+          <span class="na">fieldPath</span><span class="pi">:</span> <span class="s">status.podIP</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">CPU_REQUEST</span>
+      <span class="na">valueFrom</span><span class="pi">:</span>
+        <span class="na">resourceFieldRef</span><span class="pi">:</span>
+          <span class="na">containerName</span><span class="pi">:</span> <span class="s">kubernetes-simple-pod</span>
+          <span class="na">resource</span><span class="pi">:</span> <span class="s">requests.cpu</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">CPU_LIMIT</span>
+      <span class="na">valueFrom</span><span class="pi">:</span>
+        <span class="na">resourceFieldRef</span><span class="pi">:</span>
+          <span class="na">containerName</span><span class="pi">:</span> <span class="s">kubernetes-simple-pod</span>
+          <span class="na">resource</span><span class="pi">:</span> <span class="s">limits.cpu</span>          
+</code></pre></div></div>
+
+<hr />
+
+<p><strong>github.com/rayshoo</strong></p>
+
+
+              </div>
+          </div>
+
+          <!-- Sidebar -->
+  <div id="sidebar">
+    <div class="inner">
+
+      <!-- Search -->
+        <section id="search" class="alt">
+          <form method="post" action="#">
+            <input type="text" name="query" id="query" placeholder="Search" />
+          </form>
+        </section>
+
+      <!-- Menu -->
+        <nav id="menu">
+          <header class="major">
+            <h2>Menu</h2>
+          </header>
+          <ul>
+            <li><a href="/">Main</a></li>
+            <li>
+              <span class="opener">Os</span>
+              <ul>
+                <li><a href="/os/windows">Windows</a></li>
+                <li><a href="/os/linux">Linux</a></li>
+              </ul>
+            </li>
+            <li>
+              <span class="opener">Devops</span>
+              <ul>
+                <li><a href="/devops/vagrant">Vagrant</a></li>
+                <li><a href="/devops/ansible">Ansible</a></li>
+                <li><a href="/devops/docker">Docker</a></li>
+                <li><a href="/devops/kubernetes">Kubernetes</a></li>
+                <li><a href="/devops/serverspec">Serverspec</a></li>
+                <li><a href="/devops/jenkins">Jenkins</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+      <!-- Section -->
+        <section>
+          <header class="major">
+            <h2>Ante interdum</h2>
+          </header>
+          <div class="mini-posts">
+            <article>
+              <a href="#" class="image"><img src="/assets/images/pic07.jpg" alt="" /></a>
+              <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+            </article>
+            <article>
+              <a href="#" class="image"><img src="/assets/images/pic08.jpg" alt="" /></a>
+              <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+            </article>
+            <article>
+              <a href="#" class="image"><img src="/assets/images/pic09.jpg" alt="" /></a>
+              <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+            </article>
+          </div>
+          <ul class="actions">
+            <li><a href="#" class="button">More</a></li>
+          </ul>
+        </section>
+
+      <!-- Section -->
+        <section>
+          <header class="major">
+            <h2>Get in touch</h2>
+          </header>
+          <p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+          <ul class="contact">
+            <li class="fa-envelope-o"><a href="#">rayshoo92@gmail.com</a></li>
+            <!-- <li class="fa-phone"></li>
+            <li class="fa-home"><br /> -->
+            <li class="fa-home">Seoul, Republic of Korea</li>
+            <br />
+            </li>
+          </ul>
+        </section>
+
+      <!-- Footer -->
+        <footer id="footer">
+          <p class="copyright">&copy; Blog. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>. Jekyll integration: <a href="https://andrewbanchi.ch">Andrew Banchich</a>.</p>
+        </footer>
+
+    </div>
+  </div>
+
+
+      </div>
+
+      <!-- Scripts -->
+  <script src="/assets/js/jquery.min.js"></script>
+  <script src="/assets/js/skel.min.js"></script>
+  <script src="/assets/js/util.js"></script>
+  <!--[if lte IE 8]><script src="http://rayshoo.test/assets/js/ie/respond.min.js"></script><![endif]-->
+  <script src="/assets/js/main.js"></script>
+
+
+</body>
+
+</html>

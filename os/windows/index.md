@@ -2,7 +2,7 @@
 layout: page
 ---
 
-<img src="https://rayshoo.github.io/assets/images/windows.png" alt="vagrant" width="40%">
+<img src="/assets/images/windows.png" alt="windows" width="400px">
 
 <hr/>
 

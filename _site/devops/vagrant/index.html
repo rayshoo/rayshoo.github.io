@@ -1,0 +1,310 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+  <title>Brian의 블로그</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie9.css" /><![endif]-->
+  <!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
+</head>
+
+
+<body>
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Main -->
+        <div id="main">
+            <div class="inner">
+
+                <!-- Header -->
+  <header id="header">
+    <a href="/" class="logo"><strong>Blog</strong> by Brian</a>
+    <ul class="icons">
+      
+      
+      
+      
+      
+      
+      
+      
+      <li><a href="https://github.com/rayshoo" class="icon fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+      
+      
+      
+    </ul>
+  </header>
+
+
+                <!-- Content -->
+                <section>
+                	<header class="main">
+                		<h1></h1>
+                	</header>
+
+                  
+
+                <p><img src="/assets/images/vagrant.png" alt="vagrant" width="280px" /></p>
+
+<hr />
+
+<p>기본 유저, 패스워드<br />
+user : vagrant<br />
+password : vagrant<br />
+<br />
+user: root<br />
+password: vagrant<br /></p>
+
+<p><code class="language-plaintext highlighter-rouge">기본적으로 호스트(vagrant ssh-config)의 공개키를 생성한 가상머신에서 가지고 있기때문에(/home/vagrant/.ssh/authorized_keys) 이를 삭제하지 않도록 한다.</code></p>
+
+<hr />
+
+<p>초기 세팅</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>vagrant init
+</code></pre></div></div>
+
+<hr />
+
+<p>박스 관련 명령어</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 조회
+<span class="nv">$ </span>vagrant box list
+
+// 추가
+<span class="nv">$ </span>vagrant box add bento/ubuntu-18.04
+
+// 이름 지정 추가
+<span class="nv">$ </span>vagrant box add centos_private  https://github.com/tommy-muehle/puppet-vagrant-boxes/releases/download/1.0.0/centos-6.6-x86_64.box
+
+// 삭제
+<span class="nv">$ </span>vagrant box remove <span class="o">[</span>name]
+</code></pre></div></div>
+<hr />
+
+<p>가상머신 관련 명령어</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 조회
+<span class="nv">$ </span>vagrant status <span class="o">[</span>name|id]
+<span class="nv">$ </span>vagrant global-status
+
+// 실행 <span class="o">(</span>실행 시 박스가 없으면 자동으로 다운로드 받는다<span class="o">)</span>
+<span class="nv">$ </span>vagrant up <span class="o">[</span>name|id] <span class="o">[</span><span class="nt">--color</span><span class="o">]</span>
+
+// 접속
+<span class="nv">$ </span>vagrant ssh <span class="o">[</span>name|id] <span class="o">[</span><span class="nt">--extra_ssh_args</span><span class="o">]</span>
+
+// 종료
+<span class="nv">$ </span>vagrant halt <span class="o">[</span>name|id]
+<span class="nv">$ </span>vagrant halting <span class="o">[</span>name|id]
+
+// 세팅 적용 <span class="o">(</span>ex: 네트워크 설정<span class="o">)</span>
+<span class="nv">$ </span>vagrant reload <span class="o">[</span>name|id]
+
+// 프로비저닝 적용
+<span class="nv">$ </span>vagrant provision <span class="o">[</span>vm-name] <span class="o">[</span><span class="nt">--color</span><span class="o">]</span>
+
+// 삭제
+<span class="nv">$ </span>vagrant destroy
+<span class="nv">$ </span>vagrant destory <span class="nt">--force</span>
+<span class="nv">$ </span>vagrant destory <span class="nt">--parallel</span>
+
+// 현재 실행 상태 저장,종료<span class="o">(</span>디스크와 램을 사용하고 있는 상태로 종료<span class="o">)</span>
+<span class="nv">$ </span>vagrant <span class="nb">suspend</span> <span class="o">[</span>name|id]
+
+// <span class="nb">suspend </span>해제 <span class="o">(</span>vagrant up 역시 가능<span class="o">)</span>
+<span class="nv">$ </span>vagrant resume <span class="o">[</span>name|id]
+
+// ssh-config 조회<span class="o">(</span>network forwarded port 설정되있어야함<span class="o">)</span>
+<span class="nv">$ </span>vagrant ssh-config
+
+// 스냅샷 조회
+<span class="nv">$ </span>vagrant snapshot list
+
+// 스냅샷 저장
+<span class="nv">$ </span>vagrant snapshot save <span class="o">[</span>vm-name] <span class="o">[</span>name]
+
+// 스냅샷 복원
+<span class="nv">$ </span>vagrant snapshot restore <span class="o">[</span>vm-name] <span class="o">[</span>name]
+
+// 스냅샷 삭제
+<span class="nv">$ </span>vagrant snapshot delete <span class="o">[</span>vm-name] <span class="o">[</span>name]
+</code></pre></div></div>
+<hr />
+
+<p>Share</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// Vagrantfile 공유
+<span class="nv">$ </span>vagrant login vagrant share
+</code></pre></div></div>
+<hr />
+
+<p>Providers</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// default provider 변경
+<span class="nv">$ </span>vagrant up –provider<span class="o">=</span>vmware_fusion vagrant up –provider<span class="o">=</span>aws
+</code></pre></div></div>
+<hr />
+
+<p>Networking</p>
+
+<pre><code class="language-Vagrantfile">Vagrant.configure("2") do |config|
+  config.vm.box = "hashicorp/precise32"
+  config.vm.provision :shell, path: "bootstrap.sh"
+  # 호스트의 4567 를 게스트 80으로 연결
+  # 브라우져에서 127.0.0.1:4567 연결하면
+  # 호스트의 apache 80번 포트로 연결된다.
+  config.vm.network :forwarded_port, host: 4567, guest: 80
+end
+</code></pre>
+<hr />
+
+<p>Plugin</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>vagrant plugin <span class="nb">install</span>
+<span class="nv">$ </span>vagrant plugin license
+<span class="nv">$ </span>vagrant plugin list
+<span class="nv">$ </span>vagrant plugin uninstall
+<span class="nv">$ </span>vagrant plugin update
+</code></pre></div></div>
+<hr />
+
+<p>Etc</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 최신 업데이트 된 박스들 조회
+<span class="nv">$ </span>vagrant box outdated
+
+// 박스 삭제<span class="o">(</span>address<span class="o">)</span>
+<span class="nv">$ </span>vagrant remove &lt;address&gt;
+
+// 현재 실행중인 virtualbox 를 재사용 가능한 box로 만든다
+<span class="nv">$ </span>vagrant package
+
+<span class="nv">$ </span>vagrant update
+<span class="nv">$ </span>vagrant repackage
+</code></pre></div></div>
+
+<hr />
+
+<p>// 참고 사항<br />
+<code class="language-plaintext highlighter-rouge">export VAGRANT_FORCE_COLOR=true 하거나 환경변수 등록하면 --color 안해도 적용됨</code></p>
+
+<hr />
+
+<p><strong>github.com/rayshoo</strong></p>
+
+
+              </div>
+          </div>
+
+          <!-- Sidebar -->
+  <div id="sidebar">
+    <div class="inner">
+
+      <!-- Search -->
+        <section id="search" class="alt">
+          <form method="post" action="#">
+            <input type="text" name="query" id="query" placeholder="Search" />
+          </form>
+        </section>
+
+      <!-- Menu -->
+        <nav id="menu">
+          <header class="major">
+            <h2>Menu</h2>
+          </header>
+          <ul>
+            <li><a href="/">Main</a></li>
+            <li>
+              <span class="opener">Os</span>
+              <ul>
+                <li><a href="/os/windows">Windows</a></li>
+                <li><a href="/os/linux">Linux</a></li>
+              </ul>
+            </li>
+            <li>
+              <span class="opener">Devops</span>
+              <ul>
+                <li><a href="/devops/vagrant">Vagrant</a></li>
+                <li><a href="/devops/ansible">Ansible</a></li>
+                <li><a href="/devops/docker">Docker</a></li>
+                <li><a href="/devops/kubernetes">Kubernetes</a></li>
+                <li><a href="/devops/serverspec">Serverspec</a></li>
+                <li><a href="/devops/jenkins">Jenkins</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+      <!-- Section -->
+        <section>
+          <header class="major">
+            <h2>Ante interdum</h2>
+          </header>
+          <div class="mini-posts">
+            <article>
+              <a href="#" class="image"><img src="/assets/images/pic07.jpg" alt="" /></a>
+              <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+            </article>
+            <article>
+              <a href="#" class="image"><img src="/assets/images/pic08.jpg" alt="" /></a>
+              <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+            </article>
+            <article>
+              <a href="#" class="image"><img src="/assets/images/pic09.jpg" alt="" /></a>
+              <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+            </article>
+          </div>
+          <ul class="actions">
+            <li><a href="#" class="button">More</a></li>
+          </ul>
+        </section>
+
+      <!-- Section -->
+        <section>
+          <header class="major">
+            <h2>Get in touch</h2>
+          </header>
+          <p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+          <ul class="contact">
+            <li class="fa-envelope-o"><a href="#">rayshoo92@gmail.com</a></li>
+            <!-- <li class="fa-phone"></li>
+            <li class="fa-home"><br /> -->
+            <li class="fa-home">Seoul, Republic of Korea</li>
+            <br />
+            </li>
+          </ul>
+        </section>
+
+      <!-- Footer -->
+        <footer id="footer">
+          <p class="copyright">&copy; Blog. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>. Jekyll integration: <a href="https://andrewbanchi.ch">Andrew Banchich</a>.</p>
+        </footer>
+
+    </div>
+  </div>
+
+
+      </div>
+
+      <!-- Scripts -->
+  <script src="/assets/js/jquery.min.js"></script>
+  <script src="/assets/js/skel.min.js"></script>
+  <script src="/assets/js/util.js"></script>
+  <!--[if lte IE 8]><script src="http://rayshoo.test/assets/js/ie/respond.min.js"></script><![endif]-->
+  <script src="/assets/js/main.js"></script>
+
+
+</body>
+
+</html>

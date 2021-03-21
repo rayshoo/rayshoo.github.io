@@ -2,15 +2,15 @@
 layout: page
 ---
 
-<img src="https://rayshoo.github.io/assets/images/kubernetes.png" alt="kubernetes" width="40%">
+<img src="/assets/images/kubernetes.png" alt="kubernetes" width="400px">
 
 <hr/>
 
-## [node](node.md)
+## [node](/devops/kubernetes/node)
 
-## [pod](pod.md)
+## [pod](/devops/kubernetes/pod)
 
-## [etc](etc.md)
+## [etc](/devops/kubernetes/etc)
 
 <hr/>
 

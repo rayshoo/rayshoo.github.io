@@ -1,17 +1,21 @@
 # Site settings
 title: Blog
-subtitle: of Brian
+subtitle: by Brian
 email: rayshoo92@gmail.com
 description: Brian Choi의 블로그에 오신것을 환영합니다
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://rayshoo.github.io/" # the base hostname & protocol for your site
+url: "http://rayshoo.test" # the base hostname & protocol for your site
 author: Brian Choi
 street_address: 
 city: Seoul
 state: 
 zip_code: 
 country: Republic of Korea
-phone: 
+phone:
+
+# Images
+kubernetes_image_url: "http://rayshoo.test/assets/images/kubernetes.png"
+kubernetes_image_width: "30%"
 
 # Social settings
 500px_url:

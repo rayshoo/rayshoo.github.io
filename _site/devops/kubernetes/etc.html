@@ -1,0 +1,200 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+  <title>Brian의 블로그</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie9.css" /><![endif]-->
+  <!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
+</head>
+
+
+<body>
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Main -->
+        <div id="main">
+            <div class="inner">
+
+                <!-- Header -->
+  <header id="header">
+    <a href="/" class="logo"><strong>Blog</strong> by Brian</a>
+    <ul class="icons">
+      
+      
+      
+      
+      
+      
+      
+      
+      <li><a href="https://github.com/rayshoo" class="icon fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+      
+      
+      
+    </ul>
+  </header>
+
+
+                <!-- Content -->
+                <section>
+                	<header class="main">
+                		<h1></h1>
+                	</header>
+
+                  
+
+                <p><img src="/assets/images/kubernetes.png" alt="kubernetes" width="400px" /></p>
+
+<hr />
+
+<h2 id="etc">etc</h2>
+
+<p>k8s bash completion : bash-completion 설치 후 .bashrc에 다음을 입력</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>source &lt;(kubectl completion bash)
+alias k=kubectl
+complete -F __start_kubectl k
+</code></pre></div></div>
+
+<p>노드 IP주소 조회(<a href="https://stedolan.github.io/jq/download/">jq설치</a> 필요)</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get nodes <span class="nt">-o</span> json | jq <span class="nt">-r</span> <span class="s1">'.items[].status.addresses[] | select(.type=="InternalIP") | .address'</span>
+</code></pre></div></div>
+
+<p>노드 정보 json, yaml형식으로 출력해서 vim 편집기로 보기</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get nodes <span class="nt">-o</span> json | vim <span class="nt">-c</span> <span class="s1">'set ft=json'</span> -
+kubectl get nodes <span class="nt">-o</span> yaml | vim <span class="nt">-c</span> <span class="s1">'set ft=yaml'</span> -
+</code></pre></div></div>
+
+<p><a href="https://github.com/tomnomnom/gron">gron</a>으로 JSON구조 파악해서 JSONPath에 인자로 전달할 값을 찾기</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get pods <span class="o">[</span>podname] <span class="nt">-o</span> json | gron
+</code></pre></div></div>
+
+<p><a href="https://mikefarah.gitbook.io/yq/">yq</a>로 출력 색깔로 보기</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">VERSION</span><span class="o">=</span>v4.2.0
+<span class="nv">BINARY</span><span class="o">=</span>yq_linux_amd64
+
+wget https://github.com/mikefarah/yq/releases/download/<span class="k">${</span><span class="nv">VERSION</span><span class="k">}</span>/<span class="k">${</span><span class="nv">BINARY</span><span class="k">}</span>.tar.gz <span class="nt">-O</span> - |<span class="se">\</span>
+  <span class="nb">tar </span>xz <span class="o">&amp;&amp;</span> <span class="nb">sudo mv</span> <span class="k">${</span><span class="nv">BINARY</span><span class="k">}</span> /usr/bin/yq
+
+kubectl get nodes <span class="nt">-o</span> yaml | yq e
+</code></pre></div></div>
+
+<hr />
+
+<p><strong>github.com/rayshoo</strong></p>
+
+
+              </div>
+          </div>
+
+          <!-- Sidebar -->
+  <div id="sidebar">
+    <div class="inner">
+
+      <!-- Search -->
+        <section id="search" class="alt">
+          <form method="post" action="#">
+            <input type="text" name="query" id="query" placeholder="Search" />
+          </form>
+        </section>
+
+      <!-- Menu -->
+        <nav id="menu">
+          <header class="major">
+            <h2>Menu</h2>
+          </header>
+          <ul>
+            <li><a href="/">Main</a></li>
+            <li>
+              <span class="opener">Os</span>
+              <ul>
+                <li><a href="/os/windows">Windows</a></li>
+                <li><a href="/os/linux">Linux</a></li>
+              </ul>
+            </li>
+            <li>
+              <span class="opener">Devops</span>
+              <ul>
+                <li><a href="/devops/vagrant">Vagrant</a></li>
+                <li><a href="/devops/ansible">Ansible</a></li>
+                <li><a href="/devops/docker">Docker</a></li>
+                <li><a href="/devops/kubernetes">Kubernetes</a></li>
+                <li><a href="/devops/serverspec">Serverspec</a></li>
+                <li><a href="/devops/jenkins">Jenkins</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+      <!-- Section -->
+        <section>
+          <header class="major">
+            <h2>Ante interdum</h2>
+          </header>
+          <div class="mini-posts">
+            <article>
+              <a href="#" class="image"><img src="/assets/images/pic07.jpg" alt="" /></a>
+              <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+            </article>
+            <article>
+              <a href="#" class="image"><img src="/assets/images/pic08.jpg" alt="" /></a>
+              <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+            </article>
+            <article>
+              <a href="#" class="image"><img src="/assets/images/pic09.jpg" alt="" /></a>
+              <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+            </article>
+          </div>
+          <ul class="actions">
+            <li><a href="#" class="button">More</a></li>
+          </ul>
+        </section>
+
+      <!-- Section -->
+        <section>
+          <header class="major">
+            <h2>Get in touch</h2>
+          </header>
+          <p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+          <ul class="contact">
+            <li class="fa-envelope-o"><a href="#">rayshoo92@gmail.com</a></li>
+            <!-- <li class="fa-phone"></li>
+            <li class="fa-home"><br /> -->
+            <li class="fa-home">Seoul, Republic of Korea</li>
+            <br />
+            </li>
+          </ul>
+        </section>
+
+      <!-- Footer -->
+        <footer id="footer">
+          <p class="copyright">&copy; Blog. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>. Jekyll integration: <a href="https://andrewbanchi.ch">Andrew Banchich</a>.</p>
+        </footer>
+
+    </div>
+  </div>
+
+
+      </div>
+
+      <!-- Scripts -->
+  <script src="/assets/js/jquery.min.js"></script>
+  <script src="/assets/js/skel.min.js"></script>
+  <script src="/assets/js/util.js"></script>
+  <!--[if lte IE 8]><script src="http://rayshoo.test/assets/js/ie/respond.min.js"></script><![endif]-->
+  <script src="/assets/js/main.js"></script>
+
+
+</body>
+
+</html>

@@ -1,6 +1,8 @@
-# [Main](../../README.md) / [Return](index.md)
+---
+layout: page
+---
 
-<img src="../../image/kubernetes.png" alt="kubernetes" width="40%">
+<img src="/assets/images/kubernetes.png" alt="kubernetes" width="400px">
 
 <hr/>
 
