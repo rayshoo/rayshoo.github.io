@@ -4,7 +4,7 @@ subtitle: by Brian
 email: rayshoo92@gmail.com
 description: Brian Choi의 블로그에 오신것을 환영합니다
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://rayshoo.test" # the base hostname & protocol for your site
+url: "rayshoo.github.io" # the base hostname & protocol for your site
 author: Brian Choi
 street_address: 
 city: Seoul
