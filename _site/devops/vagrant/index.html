@@ -11,7 +11,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
-  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/main.css"/>
+  <link rel="stylesheet" href="/assets/css/syntax.css"/>
   <!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie9.css" /><![endif]-->
   <!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
 </head>
@@ -158,15 +159,15 @@ password: vagrant<br /></p>
 
 <p><strong>Networking</strong></p>
 
-<pre><code class="language-Vagrantfile">Vagrant.configure("2") do |config|
-  config.vm.box = "hashicorp/precise32"
-  config.vm.provision :shell, path: "bootstrap.sh"
-  # 호스트의 4567 를 게스트 80으로 연결
-  # 브라우져에서 127.0.0.1:4567 연결하면
-  # 호스트의 apache 80번 포트로 연결된다.
-  config.vm.network :forwarded_port, host: 4567, guest: 80
-end
-</code></pre>
+<div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Vagrant</span><span class="p">.</span><span class="nf">configure</span><span class="p">(</span><span class="s2">"2"</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+  <span class="n">config</span><span class="p">.</span><span class="nf">vm</span><span class="p">.</span><span class="nf">box</span> <span class="o">=</span> <span class="s2">"hashicorp/precise32"</span>
+  <span class="n">config</span><span class="p">.</span><span class="nf">vm</span><span class="p">.</span><span class="nf">provision</span> <span class="ss">:shell</span><span class="p">,</span> <span class="ss">path: </span><span class="s2">"bootstrap.sh"</span>
+  <span class="c1"># 호스트의 4567 를 게스트 80으로 연결</span>
+  <span class="c1"># 브라우져에서 127.0.0.1:4567 연결하면</span>
+  <span class="c1"># 호스트의 apache 80번 포트로 연결된다.</span>
+  <span class="n">config</span><span class="p">.</span><span class="nf">vm</span><span class="p">.</span><span class="nf">network</span> <span class="ss">:forwarded_port</span><span class="p">,</span> <span class="ss">host: </span><span class="mi">4567</span><span class="p">,</span> <span class="ss">guest: </span><span class="mi">80</span>
+<span class="k">end</span>
+</code></pre></div></div>
 <hr />
 
 <p><strong>Plugin</strong></p>
@@ -199,10 +200,6 @@ end
 <p><strong>참고 사항</strong><br />
 export VAGRANT_FORCE_COLOR=true 하거나 환경변수 등록하면 –color 안해도 적용됨</p>
 
-<hr />
-
-<p><strong>github.com/rayshoo</strong></p>
-
 
               </div>
           </div>
@@ -225,6 +222,12 @@ export VAGRANT_FORCE_COLOR=true 하거나 환경변수 등록하면 –color 안
           </header>
           <ul>
             <li><a href="/">Main</a></li>
+            <li>
+              <span class="opener">Language</span>
+              <ul>
+                <li><a href="/language/ruby">Ruby</a></li>
+              </ul>
+            </li>
             <li>
               <span class="opener">Os</span>
               <ul>

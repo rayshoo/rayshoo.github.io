@@ -10,10 +10,6 @@ country: Republic of Korea
 phone:
 slack: rayshoo92@gmail.com
 
-# Images
-kubernetes_image_url: "http://rayshoo.test/assets/images/kubernetes.png"
-kubernetes_image_width: "30%"
-
 # Social settings
 500px_url:
 facebook_url:
@@ -28,3 +24,4 @@ twitter_url:
 
 # Build settings
 markdown: kramdown
+highlighter: rouge

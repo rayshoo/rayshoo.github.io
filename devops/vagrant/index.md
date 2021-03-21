@@ -107,7 +107,7 @@ $ vagrant up –provider=vmware_fusion vagrant up –provider=aws
 <hr/>
 **Networking**
 
-```Vagrantfile
+```rb
 Vagrant.configure("2") do |config|
   config.vm.box = "hashicorp/precise32"
   config.vm.provision :shell, path: "bootstrap.sh"
@@ -148,7 +148,3 @@ $ vagrant repackage
 
 **참고 사항**<br/>
 export VAGRANT_FORCE_COLOR=true 하거나 환경변수 등록하면 --color 안해도 적용됨
-
-<hr/>
-
-**github.com/rayshoo**

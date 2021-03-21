@@ -6,11 +6,7 @@ layout: page
 
 <hr/>
 
-## [node](/devops/kubernetes/node)
-
-## [pod](/devops/kubernetes/pod)
-
-## [etc](/devops/kubernetes/etc)
+## [Node](/devops/kubernetes/node) | [Pod](/devops/kubernetes/pod) | [Etc](/devops/kubernetes/etc)
 
 <hr/>
 

@@ -1,0 +1,294 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+  <title>Brian의 블로그</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+  <link rel="stylesheet" href="/assets/css/main.css"/>
+  <link rel="stylesheet" href="/assets/css/syntax.css"/>
+  <!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie9.css" /><![endif]-->
+  <!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
+</head>
+
+
+<body>
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Main -->
+        <div id="main">
+            <div class="inner">
+
+                <!-- Header -->
+  <header id="header">
+    <a href="/" class="logo"><strong>Blog</strong> by Brian</a>
+    <ul class="icons">
+      
+      
+      
+      
+      
+      
+      
+      
+      <li><a href="https://github.com/rayshoo" class="icon fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+      
+      
+      
+    </ul>
+  </header>
+
+
+                <!-- Content -->
+                <section>
+                	<header class="main">
+                		<h1></h1>
+                	</header>
+
+                  
+
+                <p><img src="/assets/images/docker.webp" alt="docker" width="15%" style="min-width:250px;" /></p>
+
+<hr />
+
+<p><strong>컨테이너 시스템 조회</strong></p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 설치된 도커 정보 확인</span>
+<span class="nv">$ </span>docker info
+
+<span class="c"># 이미지,컨테이너,볼륨,캐시 조회</span>
+<span class="nv">$ </span>docker system <span class="nb">df</span>
+
+<span class="c"># 상태 조회</span>
+<span class="nv">$ </span>docker stats <span class="o">[</span>name|id]
+
+<span class="c"># 프로세스 아이디 조회</span>
+<span class="nv">$ </span>docker top <span class="o">[</span>name|id]
+</code></pre></div></div>
+
+<p><strong>컨테이너 이미지</strong></p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 이미지 찾기</span>
+<span class="nv">$ </span>docker search <span class="o">[</span>name]
+
+<span class="c"># 이미지 다운로드</span>
+<span class="nv">$ </span>docker pull <span class="o">[</span>name]
+
+<span class="c"># 이미지 조회</span>
+<span class="nv">$ </span>docker images
+
+<span class="c"># 이미지 삭제</span>
+<span class="nv">$ </span>docker rmi <span class="o">[</span><span class="nb">id</span><span class="o">]</span>
+
+<span class="c"># 이미지 컨테이너와 같이 삭제</span>
+<span class="nv">$ </span>docker rmi <span class="nt">-f</span> <span class="o">[</span><span class="nb">id</span><span class="o">]</span>
+
+<span class="c"># 이미지 컨테이너와 같이 모두 삭제</span>
+<span class="nv">$ </span>docker rmi <span class="nt">-f</span> <span class="si">$(</span>docker images <span class="nt">-qa</span><span class="si">)</span>
+</code></pre></div></div>
+
+<p><strong>컨테이너 조회</strong></p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 실행중인 것만 조회</span>
+<span class="nv">$ </span>docker ps
+
+<span class="c"># 종료된 것 포함 모두 조회</span>
+<span class="nv">$ </span>docker ps <span class="nt">-a</span>
+</code></pre></div></div>
+
+<p><strong>컨테이너 실행</strong></p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># -d : 백그라운드에서 실행</span>
+<span class="c"># -p : port-forward (여러개 사용 가능)</span>
+<span class="c"># -v : volume-mount</span>
+<span class="c"># --name : container name</span>
+
+<span class="c"># nginx 예시</span>
+<span class="nv">$ </span>docker run <span class="nt">-d</span> <span class="nt">-p</span> 80:80 <span class="nt">--rm</span> <span class="nt">--name</span> nginx <span class="nt">-v</span> /var/www:/usr/share/nginx/html:ro nginx
+
+<span class="c"># mysql 예시</span>
+<span class="nv">$ </span>docker run <span class="se">\</span>
+<span class="nt">--name</span> <span class="o">[</span>name] <span class="se">\</span>
+<span class="nt">-p</span> 3306:3306 <span class="se">\</span>
+<span class="nt">-e</span> <span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>root1! <span class="se">\</span>
+<span class="nt">-v</span> C:/mysql/:/var/lib/mysql <span class="se">\</span>
+<span class="nt">-d</span> mysql:5.7 <span class="se">\</span>
+<span class="nt">--character-set-server</span><span class="o">=</span>utf8mb4 <span class="se">\</span>
+<span class="nt">--collation-server</span><span class="o">=</span>utf8mb4_unicode_ci
+
+<span class="c"># docker registry 예시</span>
+<span class="nv">$ </span>docker run <span class="nt">-d</span> <span class="nt">--name</span> <span class="o">[</span>name|id] <span class="nt">-p</span> <span class="o">[</span>port]:5000 registry
+
+<span class="c"># 중지되 있는 컨테이너 시작</span>
+<span class="nv">$ </span>docker start <span class="o">[</span>name|id]
+
+<span class="c"># 실행중인 컨테이너 중지 후 재시작</span>
+<span class="nv">$ </span>docker restart <span class="o">[</span>name|id]
+</code></pre></div></div>
+
+<p><strong>컨테이너 중지</strong></p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 특정 컨테이너 중지</span>
+<span class="nv">$ </span>docker stop <span class="o">[</span><span class="nb">id</span>|name]
+
+<span class="c"># 모든 컨테이너 중지</span>
+<span class="nv">$ </span>docker stop <span class="si">$(</span>docker ps <span class="nt">-qa</span><span class="si">)</span>
+
+<span class="c"># 실행중인 컨테이너 강제종료</span>
+<span class="nv">$ </span>docker stop <span class="si">$(</span>docker ps <span class="nt">-q</span> <span class="nt">-f</span> <span class="nv">status</span><span class="o">=</span>running<span class="si">)</span>
+</code></pre></div></div>
+
+<p><strong>컨테이너 삭제</strong></p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 중지된 컨테이너 삭제</span>
+<span class="nv">$ </span>docker <span class="nb">rm</span> <span class="o">[</span><span class="nb">id</span>|name]
+
+<span class="c"># 컨테이너 중지 후 삭제</span>
+<span class="nv">$ </span>docker <span class="nb">rm</span> <span class="si">$(</span>docker stop <span class="o">[</span><span class="nb">id</span>|name]<span class="si">)</span>
+
+<span class="c"># 모든 컨테이너 중지 후 삭제</span>
+<span class="nv">$ </span>docker <span class="nb">rm</span> <span class="si">$(</span>docker stop <span class="si">$(</span>docker ps <span class="nt">-qa</span><span class="si">))</span>
+
+<span class="c"># 멈춰있는 컨테이너만 삭제</span>
+<span class="nv">$ </span>docker <span class="nb">rm</span> <span class="si">$(</span>docker ps <span class="nt">-q</span> <span class="nt">-f</span> <span class="nv">status</span><span class="o">=</span>exited<span class="si">)</span>
+</code></pre></div></div>
+
+<p><strong>컨테이너 접속</strong></p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 컨테이너 생성 후 바로 접속</span>
+<span class="nv">$ </span>docker run <span class="nt">-it</span> <span class="nt">--name</span> <span class="o">[</span>name] <span class="o">[</span>image] sh
+<span class="nv">$ </span>docker run <span class="nt">-it</span> <span class="nt">--name</span> <span class="o">[</span>name] <span class="o">[</span>image] /bin/bash
+
+<span class="c"># 실행중인 컨테이너에 접속</span>
+<span class="nv">$ </span>docker <span class="nb">exec</span> <span class="nt">-it</span> <span class="o">[</span>name|id] sh
+<span class="nv">$ </span>docker <span class="nb">exec</span> <span class="nt">-it</span> <span class="o">[</span>name|id] /bin/bash
+</code></pre></div></div>
+
+<p><strong>컨테이너에서 나가기</strong></p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 백그라운드에서 돌아가는게 없으면 컨테이너가 중지될 수 있음</span>
+<span class="nv">$ </span><span class="nb">exit</span>
+
+<span class="c"># 현재 상태를 백그라운드에 놓고 잠시 나오기</span>
+ctrl+p ctrl+q
+</code></pre></div></div>
+
+<p><strong>실행중인 서버 포트 확인</strong></p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker port <span class="o">[</span>name|id]
+</code></pre></div></div>
+
+<p><strong>컨테이너 이름 바꾸기</strong></p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker rename <span class="o">[</span>original name] <span class="o">[</span>new name]
+</code></pre></div></div>
+
+
+              </div>
+          </div>
+
+          <!-- Sidebar -->
+  <div id="sidebar">
+    <div class="inner">
+
+      <!-- Search -->
+        <section id="search" class="alt">
+          <form method="post" action="#">
+            <input type="text" name="query" id="query" placeholder="Search" />
+          </form>
+        </section>
+
+      <!-- Menu -->
+        <nav id="menu">
+          <header class="major">
+            <h2>Menu</h2>
+          </header>
+          <ul>
+            <li><a href="/">Main</a></li>
+            <li>
+              <span class="opener">Language</span>
+              <ul>
+                <li><a href="/language/ruby">Ruby</a></li>
+              </ul>
+            </li>
+            <li>
+              <span class="opener">Os</span>
+              <ul>
+                <li><a href="/os/windows">Windows</a></li>
+                <li><a href="/os/linux">Linux</a></li>
+              </ul>
+            </li>
+            <li>
+              <span class="opener">Devops</span>
+              <ul>
+                <li><a href="/devops/vagrant">Vagrant</a></li>
+                <li><a href="/devops/ansible">Ansible</a></li>
+                <li><a href="/devops/docker">Docker</a></li>
+                <li><a href="/devops/kubernetes">Kubernetes</a></li>
+                <li><a href="/devops/serverspec">Serverspec</a></li>
+                <li><a href="/devops/jenkins">Jenkins</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+      <!-- Section -->
+        <section>
+          <header class="major">
+            <h2>자주 찾는 사이트</h2>
+          </header>
+          <div class="mini-posts">
+            <article>
+              <a href="https://www.fastcampus.co.kr/" class="image"><img src="/assets/images/fastcampus.png" alt="fastcampus"/></a>
+              <!-- <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p> -->
+            </article>
+            <article>
+              <a href="https://www.inflearn.com/" class="image"><img src="/assets/images/inflearn.png" alt="inflearn"/></a>
+              <!-- <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p> -->
+            </article>
+            <article>
+              <a href="https://www.youtube.com/" class="image"><img src="/assets/images/youtube.jpg" alt="youtube"/></a>
+              <!-- <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p> -->
+            </article>
+          </div>
+          <!-- <ul class="actions">
+            <li><a href="#" class="button">More</a></li>
+          </ul> -->
+        </section>
+
+      <!-- Section -->
+        <section>
+          <header class="major">
+            <h2>Get in touch</h2>
+          </header>
+          <p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+          <ul class="contact">
+            <li class="fa-envelope-o"><a href="#">rayshoo92@gmail.com</a></li>
+            <li class="fa-phone"></li><br/>
+            <li class="fa-slack">rayshoo92@gmail.com</li><br/>
+            <!-- <li class="fa-home">, Republic of Korea</li> -->
+          </ul>
+        </section>
+
+      <!-- Footer -->
+        <footer id="footer">
+          <p class="copyright">&copy; Blog. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>. Jekyll integration: <a href="https://andrewbanchi.ch">Andrew Banchich</a>.</p>
+        </footer>
+
+    </div>
+  </div>
+
+
+      </div>
+
+      <!-- Scripts -->
+  <script src="/assets/js/jquery.min.js"></script>
+  <script src="/assets/js/skel.min.js"></script>
+  <script src="/assets/js/util.js"></script>
+  <!--[if lte IE 8]><script src="rayshoo.github.io/assets/js/ie/respond.min.js"></script><![endif]-->
+  <script src="/assets/js/main.js"></script>
+
+
+</body>
+
+</html>

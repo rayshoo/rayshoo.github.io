@@ -122,6 +122,7 @@ readinessProbe : 실제로 서비스 요청에 응답할 수 있는지 진단 / 
 초기화 컨테이너는 readinessprobe를 지원안함
 
 ```yaml
+---
 apiVersion: v1
 kind: Pod
 metadata:
@@ -167,6 +168,7 @@ $ kubectl describe pods kube-apiserver-$(hostname) -n kube-system
 **cpu, 메모리 할당**
 
 ```yaml
+---
 apiVersion: v1
 kind: Pod
 metadata:
@@ -193,6 +195,7 @@ spec:
 **환경 변수 설정**
 
 ```yaml
+---
 apiVersion: v1
 kind: Pod
 metadata:
@@ -231,7 +234,3 @@ spec:
           containerName: kubernetes-simple-pod
           resource: limits.cpu          
 ```
-
-<hr/>
-
-**github.com/rayshoo**

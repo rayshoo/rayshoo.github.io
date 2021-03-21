@@ -6,7 +6,5 @@ layout: page
 
 <hr/>
 
-
-<hr/>
-
-**github.com/rayshoo**
+## Distribution
+###  [Debian/Ubuntu]() | [RHEL/CentOS]() | [Arch/Manjaro]()

@@ -8,7 +8,3 @@ layout: page
 
 ## node
 
-
-<hr/>
-
-**github.com/rayshoo**

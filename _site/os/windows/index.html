@@ -11,7 +11,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
-  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/main.css"/>
+  <link rel="stylesheet" href="/assets/css/syntax.css"/>
   <!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie9.css" /><![endif]-->
   <!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
 </head>
@@ -62,26 +63,26 @@
 
 <h3 id="11-wsl-virtual-machine-활성화"><span>1.1 </span>wsl, virtual machine 활성화</h3>
 
-<div class="language-ps highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">dism.exe</span> <span class="nv">/online</span> <span class="nv">/enable-feature</span> <span class="nv">/featurename:Microsoft-Windows-Subsystem-Linux</span> <span class="nv">/all</span> <span class="nv">/norestart</span>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 
-<span class="nf">dism.exe</span> <span class="nv">/online</span> <span class="nv">/enable-feature</span> <span class="nv">/featurename:VirtualMachinePlatform</span> <span class="nv">/all</span> <span class="nv">/norestart</span>
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 
-<span class="nf">shutdown</span> <span class="nf">-r</span> <span class="nf">-t</span> <span class="mf">0</span>
+shutdown <span class="nt">-r</span> <span class="nt">-t</span> 0
 </code></pre></div></div>
 <h3 id="12-리눅스-배포판-설치"><span>1.2 </span>리눅스 배포판 설치<br /></h3>
 <p>https://aka.ms/wslstore</p>
 
 <h3 id="13-wsl2-업그레이드"><span>1.3 </span>wsl2 업그레이드</h3>
 
-<div class="language-ps highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">기본값으로</span> <span class="nf">설정</span>
-<span class="nf">wsl</span> <span class="nf">--set-default-version</span> <span class="mf">2</span>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>기본값으로 설정
+wsl <span class="nt">--set-default-version</span> 2
 
-<span class="nf">버전</span> <span class="nf">조회</span>
-<span class="nf">wsl</span> <span class="nf">-l</span> <span class="nf">-v</span>
-<span class="nf">wsl</span> <span class="nf">--set-version</span> <span class="p">[</span><span class="nf">name</span><span class="p">]</span> <span class="mf">2</span>
+버전 조회
+wsl <span class="nt">-l</span> <span class="nt">-v</span>
+wsl <span class="nt">--set-version</span> <span class="o">[</span>name] 2
 
-<span class="nf">재시작</span>
-<span class="nf">wsl</span> <span class="nf">-t</span> <span class="p">[</span><span class="nf">name</span><span class="p">]</span>
+재시작
+wsl <span class="nt">-t</span> <span class="o">[</span>name]
 </code></pre></div></div>
 
 <p><span>1.4 </span>공식 사이트<br />
@@ -93,32 +94,32 @@
 <h2 id="2-chocolatey"><span>2. </span><a href="https://chocolatey.org/">chocolatey</a></h2>
 <p><strong>관리자 권한 필요</strong></p>
 <h3 id="21-chocolatey-패키지-매니저-설치"><span>2.1 </span>chocolatey 패키지 매니저 설치</h3>
-<div class="language-ps highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">Set-ExecutionPolicy</span> <span class="nf">Bypass</span> <span class="nf">-Scope</span> <span class="nf">Process</span> <span class="nf">-Force;</span> <span class="p">[</span><span class="nf">System.Net.ServicePointManager</span><span class="p">]</span><span class="nf">::SecurityProtocol</span> <span class="nf">=</span> <span class="p">[</span><span class="nf">System.Net.ServicePointManager</span><span class="p">]</span><span class="nf">::SecurityProtocol</span> <span class="nf">-bor</span> <span class="nf">3072;</span> <span class="nf">iex</span> <span class="s">((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))</span>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Set-ExecutionPolicy Bypass <span class="nt">-Scope</span> Process <span class="nt">-Force</span><span class="p">;</span> <span class="o">[</span>System.Net.ServicePointManager]::SecurityProtocol <span class="o">=</span> <span class="o">[</span>System.Net.ServicePointManager]::SecurityProtocol <span class="nt">-bor</span> 3072<span class="p">;</span> iex <span class="o">((</span>New-Object System.Net.WebClient<span class="o">)</span>.DownloadString<span class="o">(</span><span class="s1">'https://chocolatey.org/install.ps1'</span><span class="o">))</span>
 </code></pre></div></div>
 <h3 id="22-chocolatey-명령어"><span>2.2 </span>chocolatey 명령어</h3>
-<div class="language-ps highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">#</span> <span class="nf">조회</span>
-<span class="nf">choco</span> <span class="nf">search</span> <span class="p">[</span><span class="nf">package</span><span class="p">]</span>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 조회</span>
+choco search <span class="o">[</span>package]
 
-<span class="nf">#</span> <span class="nf">설치</span>
-<span class="nf">choco</span> <span class="nf">install</span> <span class="p">[</span><span class="nf">package</span><span class="p">]</span>
-<span class="nf">choco</span> <span class="nf">install</span> <span class="p">[</span><span class="nf">package</span><span class="p">]</span> <span class="nf">-y</span>
+<span class="c"># 설치</span>
+choco <span class="nb">install</span> <span class="o">[</span>package]
+choco <span class="nb">install</span> <span class="o">[</span>package] <span class="nt">-y</span>
 
-<span class="nf">#</span> <span class="nf">설치된</span> <span class="nf">패키지</span> <span class="nf">조회</span>
-<span class="nf">choco</span> <span class="nf">list</span> <span class="nf">--localonly</span>
-<span class="nf">choco</span> <span class="nf">list</span> <span class="nf">--localonly</span> <span class="nf">|</span> <span class="nf">findstr</span> <span class="p">[</span><span class="nf">package</span><span class="p">]</span>
-<span class="nf">choco</span> <span class="nf">list</span> <span class="nf">--localonly</span> <span class="nf">|</span> <span class="nf">grep</span> <span class="p">[</span><span class="nf">package</span><span class="p">]</span>
+<span class="c"># 설치된 패키지 조회</span>
+choco list <span class="nt">--localonly</span>
+choco list <span class="nt">--localonly</span> | findstr <span class="o">[</span>package]
+choco list <span class="nt">--localonly</span> | <span class="nb">grep</span> <span class="o">[</span>package]
 
-<span class="nf">#</span> <span class="nf">삭제</span>
-<span class="nf">choco</span> <span class="nf">uninstall</span> <span class="p">[</span><span class="nf">package</span><span class="p">]</span>
-<span class="nf">choco</span> <span class="nf">uninstall</span> <span class="p">[</span><span class="nf">package</span><span class="p">]</span> <span class="nf">-y</span>
+<span class="c"># 삭제</span>
+choco uninstall <span class="o">[</span>package]
+choco uninstall <span class="o">[</span>package] <span class="nt">-y</span>
 
-<span class="nf">#</span> <span class="nf">업그레이드</span>
-<span class="nf">choco</span> <span class="nf">upgrade</span> <span class="p">[</span><span class="nf">package</span><span class="p">]</span>
-<span class="nf">choco</span> <span class="nf">upgrade</span> <span class="p">[</span><span class="nf">package</span><span class="p">]</span> <span class="nf">-y</span>
+<span class="c"># 업그레이드</span>
+choco upgrade <span class="o">[</span>package]
+choco upgrade <span class="o">[</span>package] <span class="nt">-y</span>
 
-<span class="nf">#</span> <span class="nf">모든</span> <span class="nf">패키지</span> <span class="nf">업그레이드</span>
-<span class="nf">choco</span> <span class="nf">upgrade</span> <span class="nf">all</span>
-<span class="nf">choco</span> <span class="nf">upgrade</span> <span class="nf">all</span> <span class="nf">-y</span>
+<span class="c"># 모든 패키지 업그레이드</span>
+choco upgrade all
+choco upgrade all <span class="nt">-y</span>
 </code></pre></div></div>
 
 <h3 id="23-개인-패키지"><span>2.3 </span>개인 패키지</h3>
@@ -136,42 +137,38 @@ virtualbox jenkins zoom
 v6tov6 : ipv6 to ipv6</p>
 
 <p>포트포워드 조회</p>
-<div class="language-ps highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">netsh</span> <span class="nf">interface</span> <span class="nf">portproxy</span> <span class="nb">show</span> <span class="nf">v4tov4</span>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>netsh interface portproxy show v4tov4
 </code></pre></div></div>
 
 <p>포트포워드 설정</p>
-<div class="language-ps highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">netsh</span> <span class="nf">interface</span> <span class="nf">portproxy</span> <span class="nb">add</span> <span class="nf">v4tov4</span> <span class="nf">listenport=5058</span> <span class="nf">listenaddress=0.0.0.0</span> <span class="nf">connectport=22</span> <span class="nf">connectaddress=192.168.55.50</span>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>netsh interface portproxy add v4tov4 <span class="nv">listenport</span><span class="o">=</span>5058 <span class="nv">listenaddress</span><span class="o">=</span>0.0.0.0 <span class="nv">connectport</span><span class="o">=</span>22 <span class="nv">connectaddress</span><span class="o">=</span>192.168.55.50
 </code></pre></div></div>
 
 <p>포트포워드 해제</p>
-<div class="language-ps highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">netsh</span> <span class="nf">interface</span> <span class="nf">portproxy</span> <span class="nf">delete</span> <span class="nf">v4tov4</span> <span class="nf">listenport=5058</span> <span class="nf">listenaddress=0.0.0.0</span>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>netsh interface portproxy delete v4tov4 <span class="nv">listenport</span><span class="o">=</span>5058 <span class="nv">listenaddress</span><span class="o">=</span>0.0.0.0
 </code></pre></div></div>
 
 <hr />
 
 <h2 id="4-ansible-사용하기-위한-winrm-켜기"><span>4. </span>ansible 사용하기 위한 winrm 켜기</h2>
-<div class="language-ps highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">//</span> <span class="nf">상태</span> <span class="nf">조회</span>
-<span class="nf">Get-Service</span> <span class="nf">-Name</span> <span class="nf">winrm</span>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 상태 조회</span>
+Get-Service <span class="nt">-Name</span> winrm
 
-<span class="err">//</span> <span class="nf">켜기</span>
-<span class="nf">$url</span> <span class="nf">=</span> <span class="nf">"https:</span><span class="err">/</span><span class="nv">/raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1"</span>
-<span class="nf">$file</span> <span class="nf">=</span> <span class="nf">"$env:temp\ConfigureRemotingForAnsible.ps1"</span>
-<span class="s">(New-Object -TypeName System.Net.WebClient)</span><span class="nf">.DownloadFile</span><span class="s">($url, $file)</span>
-<span class="nf">powershell.exe</span> <span class="nf">-ExecutionPolicy</span> <span class="nf">ByPass</span> <span class="nf">-File</span> <span class="nf">$file</span>
+<span class="c"># 켜기</span>
+<span class="nv">$url</span> <span class="o">=</span> <span class="s2">"https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1"</span>
+<span class="nv">$file</span> <span class="o">=</span> <span class="s2">"</span><span class="nv">$env</span><span class="s2">:temp</span><span class="se">\C</span><span class="s2">onfigureRemotingForAnsible.ps1"</span>
+<span class="o">(</span>New-Object <span class="nt">-TypeName</span> System.Net.WebClient<span class="o">)</span>.DownloadFile<span class="o">(</span><span class="nv">$url</span>, <span class="nv">$file</span><span class="o">)</span>
+powershell.exe <span class="nt">-ExecutionPolicy</span> ByPass <span class="nt">-File</span> <span class="nv">$file</span>
 
-<span class="err">//</span> <span class="nf">상태</span> <span class="nf">자세히</span> <span class="nf">조회</span>
-<span class="nf">winrm</span> <span class="nf">enumerate</span> <span class="nf">winrm</span><span class="nv">/config/Listener</span>
+<span class="c"># 상태 자세히 조회</span>
+winrm enumerate winrm/config/Listener
 </code></pre></div></div>
 
 <hr />
 
 <h2 id="5-cortana-삭제"><span>5. </span>cortana 삭제</h2>
-<div class="language-ps highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">Get-AppxPackage</span> <span class="nf">-allusers</span> <span class="nf">Microsoft.549981C3F5F10</span> <span class="nf">|</span> <span class="nf">Remove-AppxPackage</span>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Get-AppxPackage <span class="nt">-allusers</span> Microsoft.549981C3F5F10 | Remove-AppxPackage
 </code></pre></div></div>
-
-<hr />
-
-<p><strong>github.com/rayshoo</strong></p>
 
 
               </div>
@@ -195,6 +192,12 @@ v6tov6 : ipv6 to ipv6</p>
           </header>
           <ul>
             <li><a href="/">Main</a></li>
+            <li>
+              <span class="opener">Language</span>
+              <ul>
+                <li><a href="/language/ruby">Ruby</a></li>
+              </ul>
+            </li>
             <li>
               <span class="opener">Os</span>
               <ul>

@@ -11,7 +11,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
-  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/main.css"/>
+  <link rel="stylesheet" href="/assets/css/syntax.css"/>
   <!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie9.css" /><![endif]-->
   <!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
 </head>
@@ -164,7 +165,8 @@ readinessProbe : 실제로 서비스 요청에 응답할 수 있는지 진단 / 
 앱 컨테이너 실행 전에 별도의 작업을 지시하기 위해 사용하는 컨테이너
 초기화 컨테이너는 readinessprobe를 지원안함</p>
 
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">v1</span>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">apiVersion</span><span class="pi">:</span> <span class="s">v1</span>
 <span class="na">kind</span><span class="pi">:</span> <span class="s">Pod</span>
 <span class="na">metadata</span><span class="pi">:</span>
   <span class="na">name</span><span class="pi">:</span> <span class="s">kubernetes-simple-pod</span>
@@ -207,7 +209,8 @@ kube-apiserver로 조회만 가능하다. 보통 kube-apiserver, etcd와 같은 
 
 <p><strong>cpu, 메모리 할당</strong></p>
 
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">v1</span>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">apiVersion</span><span class="pi">:</span> <span class="s">v1</span>
 <span class="na">kind</span><span class="pi">:</span> <span class="s">Pod</span>
 <span class="na">metadata</span><span class="pi">:</span>
   <span class="na">name</span><span class="pi">:</span> <span class="s">kubernetes-simple-pod</span>
@@ -232,7 +235,8 @@ kube-apiserver로 조회만 가능하다. 보통 kube-apiserver, etcd와 같은 
 
 <p><strong>환경 변수 설정</strong></p>
 
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">v1</span>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">apiVersion</span><span class="pi">:</span> <span class="s">v1</span>
 <span class="na">kind</span><span class="pi">:</span> <span class="s">Pod</span>
 <span class="na">metadata</span><span class="pi">:</span>
   <span class="na">name</span><span class="pi">:</span> <span class="s">kubernetes-simple-pod</span>
@@ -271,10 +275,6 @@ kube-apiserver로 조회만 가능하다. 보통 kube-apiserver, etcd와 같은 
           <span class="na">resource</span><span class="pi">:</span> <span class="s">limits.cpu</span>          
 </code></pre></div></div>
 
-<hr />
-
-<p><strong>github.com/rayshoo</strong></p>
-
 
               </div>
           </div>
@@ -297,6 +297,12 @@ kube-apiserver로 조회만 가능하다. 보통 kube-apiserver, etcd와 같은 
           </header>
           <ul>
             <li><a href="/">Main</a></li>
+            <li>
+              <span class="opener">Language</span>
+              <ul>
+                <li><a href="/language/ruby">Ruby</a></li>
+              </ul>
+            </li>
             <li>
               <span class="opener">Os</span>
               <ul>
