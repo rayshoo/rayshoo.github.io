@@ -16,13 +16,13 @@
                 <!-- Content -->
                 <section>
                 <header class="main">
-                  <div><img src="/assets/images/kubernetes.png" alt="kubernetes" width="20%" style="min-width:300px;"></div>
-                  {% for category in site.categories %}
-                  {% if category[0] == 'kubernetes' %}
+                  <div><img src="/assets/images/ansible.png" alt="ansible" width="12%" style="min-width:200px;"></div>
                   <div id="list">
                     <div>
-                      <a class="list-main" href="/devops/kubernetes">{{ category[0] }}</a>
+                      <a class="list-main" href="/devops/ansible">ansible</a>
                       <ul style="padding:0;">
+                      {% for category in site.categories %}
+                      {% if category[0] == 'ansible' %}
                       {% for post in category[1] %}
                         <li style="list-style: none;"><a href="{{ post.url }}">{{ post.title }}</a></li>
                       {% endfor %}

@@ -26,10 +26,5 @@ twitter_url:
 markdown: kramdown
 highlighter: rouge
 
+# url settings
 permalink: /:categories/:title
-
-# page settings
-kubernetes_title: kubernetes
-kubernetes_cover: /assets/images/kubernetes.png
-kubernetes_coversize: 20%
-kubernetes_minsize: min-width:300px;

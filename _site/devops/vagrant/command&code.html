@@ -12,6 +12,7 @@
   <!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
   <link rel="stylesheet" href="/assets/css/main.css"/>
   <link rel="stylesheet" href="/assets/css/syntax.css"/>
+  <link rel="stylesheet" href="/assets/css/private.css"/>
   <!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie9.css" /><![endif]-->
   <!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
 </head>
@@ -45,14 +46,16 @@
                 <section>
                 <header class="main">
                   <div><img src="/assets/images/vagrant.png" alt="kubernetes" width="12%" style="min-width:200px;"></div>
-                  
-                  
-                  
-                  
                   <div id="list">
                     <div>
                       <a class="list-main" href="/devops/vagrant">vagrant</a>
                       <ul style="padding:0;">
+                      
+                      
+                  
+                      
+                  
+                      
                       
                         <li style="list-style: none;"><a href="/devops/vagrant/command&code">command & code</a></li>
                       
@@ -61,50 +64,9 @@
                   </div>
                   
                   
-                  
+                      
                   
                 </header>
-                <style>
-                  header.main {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                  }
-                  header.main > div {
-                    flex: 1;
-                  }
-                  header.main #list{
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    margin: 0;
-                    border-left: solid #7f888f 1px;
-                  }
-                  header.main #list a.list-main {
-                    font-weight:bold;
-                    font-size: 1.5rem;
-                  }
-                  header.main #list a {
-                    color: #000;
-                  }
-                  @media ( max-width: 800px ) {
-                    header.main #list{
-                      border: none;
-                    }
-                  }
-                  @media ( max-width: 555px ) {
-                    header.main {
-                      display: block;
-                      text-align: center;
-                    }
-                    header.main #list{
-                      display: block;
-                      padding-left: 1rem;
-                      border : none;
-                      text-align: left;
-                    }
-                  }
-                </style>
                 <hr/>
                 <p>기본 유저, 패스워드<br />
 user : vagrant<br />
@@ -247,7 +209,6 @@ password: vagrant<br /></p>
 <p><strong>참고 사항</strong><br />
 export VAGRANT_FORCE_COLOR=true 하거나 환경변수 등록하면 –color 안해도 적용됨</p>
 
-
               </div>
           </div>
           <!-- Sidebar -->
@@ -256,9 +217,20 @@ export VAGRANT_FORCE_COLOR=true 하거나 환경변수 등록하면 –color 안
 
       <!-- Search -->
         <section id="search" class="alt">
-          <form method="post" action="#">
-            <input type="text" name="query" id="query" placeholder="Search" />
+          <form method="get" action="#" id="search_form">
+            <input type="text" name="query" id="query" placeholder="Search" tabindex="1"/>
           </form>
+          <script type="text/javascript" src="/assets/js/lightJekyllSearch.js"></script>
+          <script type="text/javascript">
+              lightJekyllSearch.search({
+                  el : document.querySelector('#query'),
+                  placeholder : 'Search',
+                  postJsonPath : '/assets/json/posts.json'
+              });
+              document.querySelector('#search_form').addEventListener('submit', e => {
+                e.preventDefault();
+              })
+          </script>
         </section>
 
       <!-- Menu -->

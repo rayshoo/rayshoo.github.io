@@ -1,0 +1,39 @@
+header.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+header.main > div {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+header.main #list{
+  margin: 0;
+  border-left: solid #7f888f 1px;
+}
+header.main #list a.list-main {
+  font-weight:bold;
+  font-size: 1.5rem;
+}
+header.main #list a {
+  color: #000;
+}
+@media ( max-width: 800px ) {
+  header.main #list{
+    border: none;
+  }
+}
+@media ( max-width: 555px ) {
+  header.main {
+    display: block;
+    text-align: center;
+  }
+  header.main #list{
+    display: block;
+    padding-left: 1rem;
+    border : none;
+    text-align: left;
+  }
+}

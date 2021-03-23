@@ -12,6 +12,7 @@
   <!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
   <link rel="stylesheet" href="/assets/css/main.css"/>
   <link rel="stylesheet" href="/assets/css/syntax.css"/>
+  <link rel="stylesheet" href="/assets/css/private.css"/>
   <!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie9.css" /><![endif]-->
   <!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
 </head>
@@ -51,6 +52,8 @@
                   
                   
                   
+                  
+                  
                   <div id="list">
                     <div>
                       <a class="list-main" href="/devops/kubernetes">kubernetes</a>
@@ -70,47 +73,6 @@
                   
                   
                 </header>
-                <style>
-                  header.main {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                  }
-                  header.main > div {
-                    flex: 1;
-                  }
-                  header.main #list{
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    margin: 0;
-                    border-left: solid #7f888f 1px;
-                  }
-                  header.main #list a.list-main {
-                    font-weight:bold;
-                    font-size: 1.5rem;
-                  }
-                  header.main #list a {
-                    color: #000;
-                  }
-                  @media ( max-width: 800px ) {
-                    header.main #list{
-                      border: none;
-                    }
-                  }
-                  @media ( max-width: 555px ) {
-                    header.main {
-                      display: block;
-                      text-align: center;
-                    }
-                    header.main #list{
-                      display: block;
-                      padding-left: 1rem;
-                      border : none;
-                      text-align: left;
-                    }
-                  }
-                </style>
                 <hr/>
                 <h2 id="pod">Pod</h2>
 
@@ -328,7 +290,6 @@ kube-apiserver로 조회만 가능하다. 보통 kube-apiserver, etcd와 같은 
           <span class="na">resource</span><span class="pi">:</span> <span class="s">limits.cpu</span>          
 </code></pre></div></div>
 
-
               </div>
           </div>
           <!-- Sidebar -->
@@ -337,9 +298,20 @@ kube-apiserver로 조회만 가능하다. 보통 kube-apiserver, etcd와 같은 
 
       <!-- Search -->
         <section id="search" class="alt">
-          <form method="post" action="#">
-            <input type="text" name="query" id="query" placeholder="Search" />
+          <form method="get" action="#" id="search_form">
+            <input type="text" name="query" id="query" placeholder="Search" tabindex="1"/>
           </form>
+          <script type="text/javascript" src="/assets/js/lightJekyllSearch.js"></script>
+          <script type="text/javascript">
+              lightJekyllSearch.search({
+                  el : document.querySelector('#query'),
+                  placeholder : 'Search',
+                  postJsonPath : '/assets/json/posts.json'
+              });
+              document.querySelector('#search_form').addEventListener('submit', e => {
+                e.preventDefault();
+              })
+          </script>
         </section>
 
       <!-- Menu -->

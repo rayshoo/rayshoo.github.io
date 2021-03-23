@@ -13,6 +13,7 @@
   <!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
   <link rel="stylesheet" href="/assets/css/main.css"/>
   <link rel="stylesheet" href="/assets/css/syntax.css"/>
+  <link rel="stylesheet" href="/assets/css/private.css"/>
   <!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie9.css" /><![endif]-->
   <!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
 </head>
@@ -168,9 +169,20 @@
 
       <!-- Search -->
         <section id="search" class="alt">
-          <form method="post" action="#">
-            <input type="text" name="query" id="query" placeholder="Search" />
+          <form method="get" action="#" id="search_form">
+            <input type="text" name="query" id="query" placeholder="Search" tabindex="1"/>
           </form>
+          <script type="text/javascript" src="/assets/js/lightJekyllSearch.js"></script>
+          <script type="text/javascript">
+              lightJekyllSearch.search({
+                  el : document.querySelector('#query'),
+                  placeholder : 'Search',
+                  postJsonPath : '/assets/json/posts.json'
+              });
+              document.querySelector('#search_form').addEventListener('submit', e => {
+                e.preventDefault();
+              })
+          </script>
         </section>
 
       <!-- Menu -->
