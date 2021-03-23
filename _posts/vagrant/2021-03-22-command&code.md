@@ -1,10 +1,8 @@
 ---
-layout: page
+title: "command & code"
+categories: [devops, vagrant]
+layout: vagrant
 ---
-
-<img src="/assets/images/vagrant.png" alt="vagrant" width="15%" style="min-width:200px;">
-
-<hr/>
 
 기본 유저, 패스워드<br/>
 user : vagrant<br/>

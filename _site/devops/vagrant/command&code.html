@@ -5,7 +5,6 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-
 <head>
   <title>Brian의 블로그</title>
   <meta charset="utf-8" />
@@ -17,19 +16,15 @@
   <!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
 </head>
 
-
 <body>
-
     <!-- Wrapper -->
     <div id="wrapper">
-
         <!-- Main -->
         <div id="main">
             <div class="inner">
-
                 <!-- Header -->
   <header id="header">
-    <a href="/" class="logo"><strong>Blog</strong> by Brian</a>
+    <a href="/" class="logo"><strong>Blog by Brian</strong> </a>
     <ul class="icons">
       
       
@@ -46,20 +41,72 @@
     </ul>
   </header>
 
-
                 <!-- Content -->
                 <section>
-                	<header class="main">
-                		<h1></h1>
-                	</header>
-
+                <header class="main">
+                  <div><img src="/assets/images/vagrant.png" alt="kubernetes" width="12%" style="min-width:200px;"></div>
                   
-
-                <p><img src="/assets/images/vagrant.png" alt="vagrant" width="15%" style="min-width:200px;" /></p>
-
-<hr />
-
-<p>기본 유저, 패스워드<br />
+                  
+                  
+                  
+                  <div id="list">
+                    <div>
+                      <a class="list-main" href="/devops/vagrant">vagrant</a>
+                      <ul style="padding:0;">
+                      
+                        <li style="list-style: none;"><a href="/devops/vagrant/command&code">command & code</a></li>
+                      
+                      </ul>
+                    </div>
+                  </div>
+                  
+                  
+                  
+                  
+                </header>
+                <style>
+                  header.main {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  }
+                  header.main > div {
+                    flex: 1;
+                  }
+                  header.main #list{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0;
+                    border-left: solid #7f888f 1px;
+                  }
+                  header.main #list a.list-main {
+                    font-weight:bold;
+                    font-size: 1.5rem;
+                  }
+                  header.main #list a {
+                    color: #000;
+                  }
+                  @media ( max-width: 800px ) {
+                    header.main #list{
+                      border: none;
+                    }
+                  }
+                  @media ( max-width: 555px ) {
+                    header.main {
+                      display: block;
+                      text-align: center;
+                    }
+                    header.main #list{
+                      display: block;
+                      padding-left: 1rem;
+                      border : none;
+                      text-align: left;
+                    }
+                  }
+                </style>
+                <hr/>
+                <p>기본 유저, 패스워드<br />
 user : vagrant<br />
 password : vagrant<br />
 <br />
@@ -203,7 +250,6 @@ export VAGRANT_FORCE_COLOR=true 하거나 환경변수 등록하면 –color 안
 
               </div>
           </div>
-
           <!-- Sidebar -->
   <div id="sidebar">
     <div class="inner">
@@ -289,15 +335,13 @@ export VAGRANT_FORCE_COLOR=true 하거나 환경변수 등록하면 –color 안
 
       <!-- Footer -->
         <footer id="footer">
-          <p class="copyright">&copy; Blog. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>. Jekyll integration: <a href="https://andrewbanchi.ch">Andrew Banchich</a>.</p>
+          <p class="copyright">&copy; Blog by Brian. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>. Jekyll integration: <a href="https://andrewbanchi.ch">Andrew Banchich</a>.</p>
         </footer>
 
     </div>
   </div>
 
-
       </div>
-
       <!-- Scripts -->
   <script src="/assets/js/jquery.min.js"></script>
   <script src="/assets/js/skel.min.js"></script>
@@ -305,7 +349,5 @@ export VAGRANT_FORCE_COLOR=true 하거나 환경변수 등록하면 –color 안
   <!--[if lte IE 8]><script src="rayshoo.github.io/assets/js/ie/respond.min.js"></script><![endif]-->
   <script src="/assets/js/main.js"></script>
 
-
 </body>
-
 </html>

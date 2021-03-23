@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+{% include head.html %}
+<body>
+    <!-- Wrapper -->
+    <div id="wrapper">
+        <!-- Main -->
+        <div id="main">
+            <div class="inner">
+                {% include header.html %}
+                <!-- Content -->
+                <section>
+                <header class="main">
+                  <div><img src="/assets/images/vagrant.png" alt="kubernetes" width="12%" style="min-width:200px;"></div>
+                  {% for category in site.categories %}
+                  {% if category[0] == 'vagrant' %}
+                  <div id="list">
+                    <div>
+                      <a class="list-main" href="/devops/vagrant">{{ category[0] }}</a>
+                      <ul style="padding:0;">
+                      {% for post in category[1] %}
+                        <li style="list-style: none;"><a href="{{ post.url }}">{{ post.title }}</a></li>
+                      {% endfor %}
+                      </ul>
+                    </div>
+                  </div>
+                  {% endif %}
+                  {% endfor %}
+                </header>
+                <style>
+                  header.main {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  }
+                  header.main > div {
+                    flex: 1;
+                  }
+                  header.main #list{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0;
+                    border-left: solid #7f888f 1px;
+                  }
+                  header.main #list a.list-main {
+                    font-weight:bold;
+                    font-size: 1.5rem;
+                  }
+                  header.main #list a {
+                    color: #000;
+                  }
+                  @media ( max-width: 800px ) {
+                    header.main #list{
+                      border: none;
+                    }
+                  }
+                  @media ( max-width: 555px ) {
+                    header.main {
+                      display: block;
+                      text-align: center;
+                    }
+                    header.main #list{
+                      display: block;
+                      padding-left: 1rem;
+                      border : none;
+                      text-align: left;
+                    }
+                  }
+                </style>
+                <hr/>
+                {{ content }}
+
+              </div>
+          </div>
+          {% include sidebar.html %}
+      </div>
+      {% include footer.html %}
+</body>
+</html>

@@ -1,6 +1,6 @@
 # Site settings
-title: Blog
-subtitle: by Brian
+title: Blog by Brian
+subtitle: 
 email: rayshoo92@gmail.com
 description: Brian Choi의 블로그에 오신것을 환영합니다
 baseurl: "" # the subpath of your site, e.g. /blog
@@ -25,3 +25,11 @@ twitter_url:
 # Build settings
 markdown: kramdown
 highlighter: rouge
+
+permalink: /:categories/:title
+
+# page settings
+kubernetes_title: kubernetes
+kubernetes_cover: /assets/images/kubernetes.png
+kubernetes_coversize: 20%
+kubernetes_minsize: min-width:300px;
