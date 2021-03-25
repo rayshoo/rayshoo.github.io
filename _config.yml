@@ -1,7 +1,7 @@
 # Site settings
 title: Blog by Brian
 subtitle: 
-email: rayshoo92@gmail.com
+email: fire@dragonz.dev
 description: Brian Choi의 블로그에 오신것을 환영합니다
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "rayshoo.github.io" # the base hostname & protocol for your site
