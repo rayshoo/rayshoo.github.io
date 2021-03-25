@@ -19,10 +19,10 @@
                   <div><img src="/assets/images/linux.png" alt="linux" width="25%" style="min-width:300px;"></div>
                   <div id="list">
                     <div>
-                      <a class="list-main" href="/os/linux">linux</a>
-                      <ul style="padding:0;">
                       {% for category in site.categories %}
                       {% if category[0] == 'linux' %}
+                      <a class="list-main" href="/os/linux">{{ category[0] }}</a>
+                      <ul style="padding:0;">
                       {% for post in category[1] %}
                         <li style="list-style: none;"><a href="{{ post.url }}">{{ post.title }}</a></li>
                       {% endfor %}

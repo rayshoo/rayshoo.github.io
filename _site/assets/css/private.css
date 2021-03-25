@@ -32,8 +32,11 @@ header.main #list a {
   }
   header.main #list{
     display: block;
-    padding-left: 1rem;
-    border : none;
+    padding: 1rem 0 0 1rem;
+    margin-top: 1rem;
+    border-width : 1px 0 0 0;
+    border-color: rgba(210, 215, 217, 0.75);
+    border-style: solid;
     text-align: left;
   }
 }
