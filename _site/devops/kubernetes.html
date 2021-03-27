@@ -6,7 +6,7 @@
 -->
 <html>
 <head>
-  <title>Brian의 블로그</title>
+  <title>Terminal</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -19,6 +19,7 @@
   <!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
 </head>
 
+<style>p {color: #000;}</style>
 <body>
     <!-- Wrapper -->
     <div id="wrapper">
@@ -27,7 +28,7 @@
             <div class="inner">
                 <!-- Header -->
   <header id="header">
-    <a href="/" class="logo"><strong>Blog by Brian</strong> </a>
+    <a href="/" class="logo"><strong>Terminal</strong> </a>
     <ul class="icons">
       
       
@@ -47,7 +48,11 @@
                 <!-- Content -->
                 <section>
                 <header class="main">
-                  <div><img src="/assets/images/kubernetes.png" alt="kubernetes" width="20%" style="min-width:300px;"></div>
+                  <div>
+                    <a href="https://kubernetes.io/ko/docs/home/" target="_blank">
+                      <img src="/assets/images/kubernetes.png" alt="kubernetes" width="20%" style="min-width:300px;max-width:350px;"/>
+                    </a>
+                  </div>
                   <div id="list">
                     <div>
                       
@@ -76,7 +81,18 @@
                   
                 </header>
                 <hr/>
-                
+                <h2 id="kubernetes">Kubernetes</h2>
+
+<p>쿠버네티스란 도커와 같은 컨테이너를 오케스트레이션 하는 시스템으로 배의 조타수란 그리스 단어에서 유래했다<br />
+2015년 구글이 리눅스 재단과 협업해서 클라우드 네이티브 컴퓨팅 재단을 만들고 쿠버네티스를 기부했다.<br />
+쿠버네티스의 탄생 배경을 말하면서 먼저 컨테이너에 대한 설명이 필요하다.<br /><br />
+리눅스는 원래 프로세스 별로 자원을 격리해서 사용하는 cgroup과 특정 디렉터리로 권한을 제한하는 chroot 등으로 격리 환경을 구성할 수 있었다.<br />
+여기에 디스크의 파일 변경 사항을 레이어 형태로 저장하는 파일 시스템을 합해 컨테이너라는 개념이 생겼다.<br />
+컨테이너를 이용하면 개발 환경과 운영 환경의 차이 때문에 일어나는 많은 장애를 막을 수 있다.<br /><br />
+서비스의 규모가 커질수록 여러 컨테이너로 구성된 구조는 운영하기가 쉽지 않다. 여러 대 서버에 컨테이너를 배포하는 것부터,<br />
+서버에 장애가 발생했을 때 해당 서버의 컨테이너를 다른 서버에 옮기는 등의 모든 작업을 수동으로 하면 굉장히 피곤한 일이 될 것이다.<br />
+이런 컨테이너들을 손쉽게 제어하고 자동화할 수 있도록 만드는 것이 컨테이너 오케스트레이션 시스템이며,<br />
+그 중에 이 글을 작성하는 2021년 기준으로 가장 유명한 것이 쿠버네티스 인 것이다.</p>
 
               </div>
           </div>
@@ -139,7 +155,7 @@
       <!-- Section -->
         <section>
           <header class="major">
-            <h2>자주 찾는 사이트</h2>
+            <h2>Bookmark</h2>
           </header>
           <div class="mini-posts">
             <article>
@@ -176,7 +192,7 @@
 
       <!-- Footer -->
         <footer id="footer">
-          <p class="copyright">&copy; Blog by Brian. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>. Jekyll integration: <a href="https://andrewbanchi.ch">Andrew Banchich</a>.</p>
+          <p class="copyright">&copy; Terminal. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>. Jekyll integration: <a href="https://andrewbanchi.ch">Andrew Banchich</a>.</p>
         </footer>
 
     </div>

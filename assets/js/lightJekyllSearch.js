@@ -25,6 +25,12 @@ var lightJekyllSearch = {
 
         this.innerFunctions.addEvent('keyup', config.el, function(e)
         {
+            if(this.value === ""){
+              if ( document.getElementById('light-jekyll-search-suggestion') !== null ) {
+                document.getElementById('light-jekyll-search-suggestion').style.display = 'none';
+              }
+              return;
+            }
             if ( document.getElementById('light-jekyll-search-suggestion') !== null ) {
                 if ( document.getElementById('light-jekyll-search-suggestion').style.display === 'none' ) {
                     document.getElementById('light-jekyll-search-suggestion').style.display = '';
@@ -48,7 +54,7 @@ var lightJekyllSearch = {
 
         for ( var i = 0; i < posts.length; i++ ) {
             for ( var key in posts[i] ) {
-                if ( posts[i][key].indexOf(toSearch)!=-1 ) {
+                if ( posts[i][key].toLowerCase().indexOf(toSearch.toLowerCase())!=-1 ) {
                     if ( !this.innerFunctions.itemExists(results, posts[i]) ) {
                         results.push(posts[i]);
                     }

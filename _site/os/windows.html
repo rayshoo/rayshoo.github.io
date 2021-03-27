@@ -6,7 +6,7 @@
 -->
 <html>
 <head>
-  <title>Brian의 블로그</title>
+  <title>Terminal</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -26,6 +26,9 @@
       display: none;
     }
   }
+  p {
+    color: #000;
+  }
 </style>
 <body>
     <!-- Wrapper -->
@@ -35,7 +38,7 @@
             <div class="inner">
                 <!-- Header -->
   <header id="header">
-    <a href="/" class="logo"><strong>Blog by Brian</strong> </a>
+    <a href="/" class="logo"><strong>Terminal</strong> </a>
     <ul class="icons">
       
       
@@ -55,7 +58,12 @@
                 <!-- Content -->
                 <section>
                 <header class="main">
-                  <div><img src="/assets/images/windows.png" alt="windows" width="25%" style="min-width:300px;"></div>
+                  <div>
+                    <a href="https://docs.microsoft.com/ko-kr/windows/" target="_blank">
+                      <img src="/assets/images/windows.png" alt="windows" width="25%" style="min-width:300px;max-width:350px;"/>
+                    </a>
+                  </div>
+                  <!-- <div><img src="/assets/images/windows.png" alt="windows" width="25%" style="min-width:300px;"></div> -->
                   <div id="list">
                     <div>
                       
@@ -80,7 +88,7 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 shutdown <span class="nt">-r</span> <span class="nt">-t</span> 0
 </code></pre></div></div>
 <h3 id="12-리눅스-배포판-설치"><span>1.2 </span>리눅스 배포판 설치<br /></h3>
-<p>https://aka.ms/wslstore</p>
+<p><a href="https://aka.ms/wslstore">https://aka.ms/wslstore</a></p>
 
 <h3 id="13-wsl2-업그레이드"><span>1.3 </span>wsl2 업그레이드</h3>
 
@@ -104,7 +112,9 @@ wsl <span class="nt">-t</span> <span class="o">[</span>name]
 <h2 id="2-chocolatey"><span>2. </span><a href="https://chocolatey.org/">chocolatey</a></h2>
 <p><strong>관리자 권한 필요</strong></p>
 <h3 id="21-chocolatey-패키지-매니저-설치"><span>2.1 </span>chocolatey 패키지 매니저 설치</h3>
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Set-ExecutionPolicy Bypass <span class="nt">-Scope</span> Process <span class="nt">-Force</span><span class="p">;</span> <span class="o">[</span>System.Net.ServicePointManager]::SecurityProtocol <span class="o">=</span> <span class="o">[</span>System.Net.ServicePointManager]::SecurityProtocol <span class="nt">-bor</span> 3072<span class="p">;</span> iex <span class="o">((</span>New-Object System.Net.WebClient<span class="o">)</span>.DownloadString<span class="o">(</span><span class="s1">'https://chocolatey.org/install.ps1'</span><span class="o">))</span>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Set-ExecutionPolicy Bypass <span class="nt">-Scope</span> Process <span class="nt">-Force</span><span class="p">;</span> <span class="sb">`</span>
+<span class="o">[</span>System.Net.ServicePointManager]::SecurityProtocol <span class="o">=</span> <span class="o">[</span>System.Net.ServicePointManager]::SecurityProtocol <span class="nt">-bor</span> 3072<span class="p">;</span> <span class="sb">`</span>
+iex <span class="o">((</span>New-Object System.Net.WebClient<span class="o">)</span>.DownloadString<span class="o">(</span><span class="s1">'https://chocolatey.org/install.ps1'</span><span class="o">))</span>
 </code></pre></div></div>
 <h3 id="22-chocolatey-명령어"><span>2.2 </span>chocolatey 명령어</h3>
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 조회</span>
@@ -241,7 +251,7 @@ winrm enumerate winrm/config/Listener
       <!-- Section -->
         <section>
           <header class="major">
-            <h2>자주 찾는 사이트</h2>
+            <h2>Bookmark</h2>
           </header>
           <div class="mini-posts">
             <article>
@@ -278,7 +288,7 @@ winrm enumerate winrm/config/Listener
 
       <!-- Footer -->
         <footer id="footer">
-          <p class="copyright">&copy; Blog by Brian. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>. Jekyll integration: <a href="https://andrewbanchi.ch">Andrew Banchich</a>.</p>
+          <p class="copyright">&copy; Terminal. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>. Jekyll integration: <a href="https://andrewbanchi.ch">Andrew Banchich</a>.</p>
         </footer>
 
     </div>

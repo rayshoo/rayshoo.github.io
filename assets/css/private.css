@@ -9,6 +9,18 @@ header.main > div {
   align-items: center;
   justify-content: center;
 }
+header.main > div > a{
+  flex: .5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+header.main > div:nth-child(2) {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 header.main #list{
   margin: 0;
   border-left: solid #7f888f 1px;
