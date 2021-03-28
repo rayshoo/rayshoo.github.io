@@ -1,26 +1,26 @@
 [
   
   {
+  "title"    : "install",
+  "category" : "",
+  "tags"     : "",
+  "url"      : "/devops/kubernetes/install",
+  "date"     : "2021-03-25 00:00:00 +0900"
+  } ,
+  
+  {
+  "title"    : "cluster",
+  "category" : "",
+  "tags"     : "",
+  "url"      : "/devops/kubernetes/cluster",
+  "date"     : "2021-03-24 00:00:00 +0900"
+  } ,
+  
+  {
   "title"    : "pod",
   "category" : "",
   "tags"     : "",
   "url"      : "/devops/kubernetes/pod",
-  "date"     : "2021-03-23 00:00:00 +0900"
-  } ,
-  
-  {
-  "title"    : "node",
-  "category" : "",
-  "tags"     : "",
-  "url"      : "/devops/kubernetes/node",
-  "date"     : "2021-03-23 00:00:00 +0900"
-  } ,
-  
-  {
-  "title"    : "etc",
-  "category" : "",
-  "tags"     : "",
-  "url"      : "/devops/kubernetes/etc",
   "date"     : "2021-03-23 00:00:00 +0900"
   } ,
   
