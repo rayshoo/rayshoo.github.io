@@ -2,3 +2,4 @@
 .jekyll-metadata
 *.gem
 .jekyll-cache
+_includes/footer.html
