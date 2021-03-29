@@ -6,7 +6,7 @@
 -->
 <html>
 {% include head.html %}
-<style>p {color: #000;}</style>
+<style>p,li {color: #000;}</style>
 <body>
     <!-- Wrapper -->
     <div id="wrapper">
@@ -18,16 +18,15 @@
                 <section>
                 <header class="main">
                   <div>
-                    <a href="https://docs.microsoft.com/ko-kr/windows/" target="_blank">
-                      <img src="/assets/images/windows.png" alt="windows" width="100%" style="min-width:300px;max-width:350px;"/>
+                    <a href="https://www.vaultproject.io/docs" target="_blank">
+                      <img src="/assets/images/vault.png" alt="vault" width="100%" style="min-width:300px;max-width:350px;"/>
                     </a>
                   </div>
-                  <!-- <div><img src="/assets/images/windows.png" alt="windows" width="25%" style="min-width:300px;"></div> -->
                   <div id="list">
                     <div>
                       {% for category in site.categories %}
-                      {% if category[0] == 'windows' %}
-                      <a class="list-main" href="/os/windows">{{ category[0] }}</a>
+                      {% if category[0] == 'vault' %}
+                      <a class="list-main" href="/security/vault">{{ category[0] }}</a>
                       <ul style="padding:0;">
                       {% for post in category[1] %}
                         <li style="list-style: none;"><a href="{{ post.url }}">{{ post.title }}</a></li>

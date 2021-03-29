@@ -33,10 +33,26 @@
   } ,
   
   {
-  "title"    : "Windows",
+  "title"    : "Vault Main",
+  "category" : "",
+  "tags"     : "",
+  "url"      : "/security/vault",
+  "date"     : "2021-03-22 00:00:00 +0900"
+  } ,
+  
+  {
+  "title"    : "Windows Main",
   "category" : "",
   "tags"     : "",
   "url"      : "/os/windows",
+  "date"     : "2021-03-22 00:00:00 +0900"
+  } ,
+  
+  {
+  "title"    : "personal settings",
+  "category" : "",
+  "tags"     : "",
+  "url"      : "/os/windows/personal-settings",
   "date"     : "2021-03-22 00:00:00 +0900"
   } ,
   
@@ -118,6 +134,14 @@
   "tags"     : "",
   "url"      : "/devops/ansible",
   "date"     : "2021-03-22 00:00:00 +0900"
+  } ,
+  
+  {
+  "title"    : "install",
+  "category" : "",
+  "tags"     : "",
+  "url"      : "/security/vault/install",
+  "date"     : "2021-03-21 00:00:00 +0900"
   } 
   
 ]

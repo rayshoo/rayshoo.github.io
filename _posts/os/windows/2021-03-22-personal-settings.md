@@ -1,6 +1,7 @@
 ---
+title: personal settings
+categories: [os, windows]
 layout: windows
-permalink: /os/windows
 ---
 
 ## <span>1. </span>[wsl2](https://docs.microsoft.com/ko-kr/windows/wsl/install-win10), [windows terminal](https://docs.microsoft.com/ko-kr/windows/terminal/)
@@ -70,6 +71,10 @@ choco upgrade [package] -y
 # 모든 패키지 업그레이드
 choco upgrade all
 choco upgrade all -y
+
+# 다운그레이드
+choco install -y [package] --version [version] --allow-downgrade
+choco install -y virtualbox --version 6.1.12 --allow-downgrade
 ```
 
 ### <span>2.3 </span>개인 패키지

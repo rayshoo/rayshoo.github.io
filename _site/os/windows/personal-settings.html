@@ -49,10 +49,11 @@
                 <section>
                 <header class="main">
                   <div>
-                    <a href="https://www.vagrantup.com/docs" target="_blank">
-                      <img src="/assets/images/vagrant.png" alt="kubernetes" width="100%" style="min-width:300px;max-width:300px;"/>
+                    <a href="https://docs.microsoft.com/ko-kr/windows/" target="_blank">
+                      <img src="/assets/images/windows.png" alt="windows" width="100%" style="min-width:300px;max-width:350px;"/>
                     </a>
                   </div>
+                  <!-- <div><img src="/assets/images/windows.png" alt="windows" width="25%" style="min-width:300px;"></div> -->
                   <div id="list">
                     <div>
                       
@@ -65,10 +66,14 @@
                       
                   
                       
-                      <a class="list-main" href="/devops/vagrant">vagrant</a>
+                  
+                      
+                  
+                      
+                      <a class="list-main" href="/os/windows">windows</a>
                       <ul style="padding:0;">
                       
-                        <li style="list-style: none;"><a href="/devops/vagrant/command&code">command & code</a></li>
+                        <li style="list-style: none;"><a href="/os/windows/personal-settings">personal settings</a></li>
                       
                       </ul>
                     </div>
@@ -77,152 +82,124 @@
                   
                       
                   
-                      
-                  
-                      
-                  
                 </header>
                 <hr/>
-                <p>기본 유저, 패스워드<br />
-user : vagrant<br />
-password : vagrant<br />
-<br />
-user: root<br />
-password: vagrant<br /></p>
+                <h2 id="1-wsl2-windows-terminal"><span>1. </span><a href="https://docs.microsoft.com/ko-kr/windows/wsl/install-win10">wsl2</a>, <a href="https://docs.microsoft.com/ko-kr/windows/terminal/">windows terminal</a></h2>
 
-<p>기본적으로 호스트(vagrant ssh-config)의 공개키를 생성한 가상머신에서 가지고 있기때문에(/home/vagrant/.ssh/authorized_keys) 이를 삭제하지 않도록 한다.</p>
+<h3 id="11-wsl-virtual-machine-활성화"><span>1.1 </span>wsl, virtual machine 활성화</h3>
 
-<hr />
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 
-<p><strong>초기 세팅</strong></p>
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>vagrant init
+shutdown <span class="nt">-r</span> <span class="nt">-t</span> 0
+</code></pre></div></div>
+<h3 id="12-리눅스-배포판-설치"><span>1.2 </span>리눅스 배포판 설치<br /></h3>
+<p><a href="https://aka.ms/wslstore">https://aka.ms/wslstore</a></p>
+
+<h3 id="13-wsl2-업그레이드"><span>1.3 </span>wsl2 업그레이드</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>기본값으로 설정
+wsl <span class="nt">--set-default-version</span> 2
+
+버전 조회
+wsl <span class="nt">-l</span> <span class="nt">-v</span>
+wsl <span class="nt">--set-version</span> <span class="o">[</span>name] 2
+
+재시작
+wsl <span class="nt">-t</span> <span class="o">[</span>name]
 </code></pre></div></div>
 
+<p><span>1.4 </span>공식 사이트<br />
+<a href="https://docs.microsoft.com/en-us/windows/wsl/interop">https://docs.microsoft.com/en-us/windows/wsl/interop</a><br />
+<a href="https://docs.microsoft.com/en-us/windows/wsl/reference">https://docs.microsoft.com/en-us/windows/wsl/reference</a></p>
+
 <hr />
 
-<p><strong>박스 관련 명령어</strong></p>
-
+<h2 id="2-chocolatey"><span>2. </span><a href="https://chocolatey.org/">chocolatey</a></h2>
+<p><strong>관리자 권한 필요</strong></p>
+<h3 id="21-chocolatey-패키지-매니저-설치"><span>2.1 </span>chocolatey 패키지 매니저 설치</h3>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Set-ExecutionPolicy Bypass <span class="nt">-Scope</span> Process <span class="nt">-Force</span><span class="p">;</span> <span class="sb">`</span>
+<span class="o">[</span>System.Net.ServicePointManager]::SecurityProtocol <span class="o">=</span> <span class="o">[</span>System.Net.ServicePointManager]::SecurityProtocol <span class="nt">-bor</span> 3072<span class="p">;</span> <span class="sb">`</span>
+iex <span class="o">((</span>New-Object System.Net.WebClient<span class="o">)</span>.DownloadString<span class="o">(</span><span class="s1">'https://chocolatey.org/install.ps1'</span><span class="o">))</span>
+</code></pre></div></div>
+<h3 id="22-chocolatey-명령어"><span>2.2 </span>chocolatey 명령어</h3>
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 조회</span>
-<span class="nv">$ </span>vagrant box list
+choco search <span class="o">[</span>package]
 
-<span class="c"># 추가</span>
-<span class="nv">$ </span>vagrant box add bento/ubuntu-18.04
+<span class="c"># 설치</span>
+choco <span class="nb">install</span> <span class="o">[</span>package]
+choco <span class="nb">install</span> <span class="o">[</span>package] <span class="nt">-y</span>
 
-<span class="c"># 이름 지정 추가</span>
-<span class="nv">$ </span>vagrant box add centos_private  https://github.com/tommy-muehle/puppet-vagrant-boxes/releases/download/1.0.0/centos-6.6-x86_64.box
+<span class="c"># 설치된 패키지 조회</span>
+choco list <span class="nt">--localonly</span>
+choco list <span class="nt">--localonly</span> | findstr <span class="o">[</span>package]
+choco list <span class="nt">--localonly</span> | <span class="nb">grep</span> <span class="o">[</span>package]
 
 <span class="c"># 삭제</span>
-<span class="nv">$ </span>vagrant box remove <span class="o">[</span>name]
+choco uninstall <span class="o">[</span>package]
+choco uninstall <span class="o">[</span>package] <span class="nt">-y</span>
+
+<span class="c"># 업그레이드</span>
+choco upgrade <span class="o">[</span>package]
+choco upgrade <span class="o">[</span>package] <span class="nt">-y</span>
+
+<span class="c"># 모든 패키지 업그레이드</span>
+choco upgrade all
+choco upgrade all <span class="nt">-y</span>
+
+<span class="c"># 다운그레이드</span>
+choco <span class="nb">install</span> <span class="nt">-y</span> <span class="o">[</span>package] <span class="nt">--version</span> <span class="o">[</span>version] <span class="nt">--allow-downgrade</span>
+choco <span class="nb">install</span> <span class="nt">-y</span> virtualbox <span class="nt">--version</span> 6.1.12 <span class="nt">--allow-downgrade</span>
 </code></pre></div></div>
-<hr />
 
-<p><strong>가상머신 관련 명령어</strong></p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 조회</span>
-<span class="nv">$ </span>vagrant status <span class="o">[</span>name|id]
-<span class="nv">$ </span>vagrant global-status
-
-<span class="c"># 실행 (실행 시 박스가 없으면 자동으로 다운로드 받는다)</span>
-<span class="nv">$ </span>vagrant up <span class="o">[</span>name|id] <span class="o">[</span><span class="nt">--color</span><span class="o">]</span>
-
-<span class="c"># 접속</span>
-<span class="nv">$ </span>vagrant ssh <span class="o">[</span>name|id] <span class="o">[</span><span class="nt">--extra_ssh_args</span><span class="o">]</span>
-
-<span class="c"># 종료</span>
-<span class="nv">$ </span>vagrant halt <span class="o">[</span>name|id]
-<span class="nv">$ </span>vagrant halting <span class="o">[</span>name|id]
-
-<span class="c"># 세팅 적용 (ex: 네트워크 설정)</span>
-<span class="nv">$ </span>vagrant reload <span class="o">[</span>name|id]
-
-<span class="c"># 프로비저닝 적용</span>
-<span class="nv">$ </span>vagrant provision <span class="o">[</span>vm-name] <span class="o">[</span><span class="nt">--color</span><span class="o">]</span>
-
-<span class="c"># 삭제</span>
-<span class="nv">$ </span>vagrant destroy
-<span class="nv">$ </span>vagrant destory <span class="nt">--force</span>
-<span class="nv">$ </span>vagrant destory <span class="nt">--parallel</span>
-
-<span class="c"># 현재 실행 상태 저장,종료(디스크와 램을 사용하고 있는 상태로 종료)</span>
-<span class="nv">$ </span>vagrant <span class="nb">suspend</span> <span class="o">[</span>name|id]
-
-<span class="c"># suspend 해제 (vagrant up 역시 가능)</span>
-<span class="nv">$ </span>vagrant resume <span class="o">[</span>name|id]
-
-<span class="c"># ssh-config 조회(network forwarded port 설정되있어야함)</span>
-<span class="nv">$ </span>vagrant ssh-config
-
-<span class="c"># 스냅샷 조회</span>
-<span class="nv">$ </span>vagrant snapshot list
-
-<span class="c"># 스냅샷 저장</span>
-<span class="nv">$ </span>vagrant snapshot save <span class="o">[</span>vm-name] <span class="o">[</span>name]
-
-<span class="c"># 스냅샷 복원</span>
-<span class="nv">$ </span>vagrant snapshot restore <span class="o">[</span>vm-name] <span class="o">[</span>name]
-
-<span class="c"># 스냅샷 삭제</span>
-<span class="nv">$ </span>vagrant snapshot delete <span class="o">[</span>vm-name] <span class="o">[</span>name]
-</code></pre></div></div>
-<hr />
-
-<p><strong>Share</strong></p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Vagrantfile 공유</span>
-<span class="nv">$ </span>vagrant login vagrant share
-</code></pre></div></div>
-<hr />
-
-<p><strong>Providers</strong></p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># default provider 변경</span>
-<span class="nv">$ </span>vagrant up –provider<span class="o">=</span>vmware_fusion vagrant up –provider<span class="o">=</span>aws
-</code></pre></div></div>
-<hr />
-
-<p><strong>Networking</strong></p>
-
-<div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Vagrant</span><span class="p">.</span><span class="nf">configure</span><span class="p">(</span><span class="s2">"2"</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
-  <span class="n">config</span><span class="p">.</span><span class="nf">vm</span><span class="p">.</span><span class="nf">box</span> <span class="o">=</span> <span class="s2">"hashicorp/precise32"</span>
-  <span class="n">config</span><span class="p">.</span><span class="nf">vm</span><span class="p">.</span><span class="nf">provision</span> <span class="ss">:shell</span><span class="p">,</span> <span class="ss">path: </span><span class="s2">"bootstrap.sh"</span>
-  <span class="c1"># 호스트의 4567 를 게스트 80으로 연결</span>
-  <span class="c1"># 브라우져에서 127.0.0.1:4567 연결하면</span>
-  <span class="c1"># 호스트의 apache 80번 포트로 연결된다.</span>
-  <span class="n">config</span><span class="p">.</span><span class="nf">vm</span><span class="p">.</span><span class="nf">network</span> <span class="ss">:forwarded_port</span><span class="p">,</span> <span class="ss">host: </span><span class="mi">4567</span><span class="p">,</span> <span class="ss">guest: </span><span class="mi">80</span>
-<span class="k">end</span>
-</code></pre></div></div>
-<hr />
-
-<p><strong>Plugin</strong></p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>vagrant plugin <span class="nb">install</span>
-<span class="nv">$ </span>vagrant plugin license
-<span class="nv">$ </span>vagrant plugin list
-<span class="nv">$ </span>vagrant plugin uninstall
-<span class="nv">$ </span>vagrant plugin update
-</code></pre></div></div>
-<hr />
-
-<p><strong>Etc</strong></p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 최신 업데이트 된 박스들 조회</span>
-<span class="nv">$ </span>vagrant box outdated
-
-<span class="c"># 박스 삭제(address)</span>
-<span class="nv">$ </span>vagrant remove &lt;address&gt;
-
-<span class="c"># 현재 실행중인 virtualbox 를 재사용 가능한 box로 만든다</span>
-<span class="nv">$ </span>vagrant package
-
-<span class="nv">$ </span>vagrant update
-<span class="nv">$ </span>vagrant repackage
+<h3 id="23-개인-패키지"><span>2.3 </span>개인 패키지</h3>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>choco <span class="nb">install</span> <span class="nt">-y</span> adb autohotkey awscli brave docker-desktop filezilla FiraCode firefox git heidisql <span class="se">\</span>
+mongodb nodejs-lts postman powershell-core python3 thunderbird vim vscode ruby scrcpy slack discord <span class="se">\</span>
+virtualbox jenkins zoom
 </code></pre></div></div>
 
 <hr />
 
-<p><strong>참고 사항</strong><br />
-export VAGRANT_FORCE_COLOR=true 하거나 환경변수 등록하면 –color 안해도 적용됨</p>
+<h2 id="3-port-foward"><span>3. </span><a href="https://docs.microsoft.com/ko-kr/windows-server/networking/technologies/netsh/netsh-interface-portproxy">port-foward</a></h2>
+<p><strong>관리자 권한 필요</strong></p>
+
+<p>v4tov4 : ipv4 to ipv4
+v6tov6 : ipv6 to ipv6</p>
+
+<p>포트포워드 조회</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>netsh interface portproxy show v4tov4
+</code></pre></div></div>
+
+<p>포트포워드 설정</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>netsh interface portproxy add v4tov4 <span class="nv">listenport</span><span class="o">=</span>5058 <span class="nv">listenaddress</span><span class="o">=</span>0.0.0.0 <span class="nv">connectport</span><span class="o">=</span>22 <span class="nv">connectaddress</span><span class="o">=</span>192.168.55.50
+</code></pre></div></div>
+
+<p>포트포워드 해제</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>netsh interface portproxy delete v4tov4 <span class="nv">listenport</span><span class="o">=</span>5058 <span class="nv">listenaddress</span><span class="o">=</span>0.0.0.0
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="4-ansible-사용하기-위한-winrm-켜기"><span>4. </span>ansible 사용하기 위한 winrm 켜기</h2>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 상태 조회</span>
+Get-Service <span class="nt">-Name</span> winrm
+
+<span class="c"># 켜기</span>
+<span class="nv">$url</span> <span class="o">=</span> <span class="s2">"https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1"</span>
+<span class="nv">$file</span> <span class="o">=</span> <span class="s2">"</span><span class="nv">$env</span><span class="s2">:temp</span><span class="se">\C</span><span class="s2">onfigureRemotingForAnsible.ps1"</span>
+<span class="o">(</span>New-Object <span class="nt">-TypeName</span> System.Net.WebClient<span class="o">)</span>.DownloadFile<span class="o">(</span><span class="nv">$url</span>, <span class="nv">$file</span><span class="o">)</span>
+powershell.exe <span class="nt">-ExecutionPolicy</span> ByPass <span class="nt">-File</span> <span class="nv">$file</span>
+
+<span class="c"># 상태 자세히 조회</span>
+winrm enumerate winrm/config/Listener
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="5-cortana-삭제"><span>5. </span>cortana 삭제</h2>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Get-AppxPackage <span class="nt">-allusers</span> Microsoft.549981C3F5F10 | Remove-AppxPackage
+</code></pre></div></div>
 
               </div>
           </div>

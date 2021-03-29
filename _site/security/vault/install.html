@@ -19,7 +19,7 @@
   <!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
 </head>
 
-<style>p {color: #000;}</style>
+<style>p,li {color: #000;}</style>
 <body>
     <!-- Wrapper -->
     <div id="wrapper">
@@ -49,8 +49,8 @@
                 <section>
                 <header class="main">
                   <div>
-                    <a href="https://www.vagrantup.com/docs" target="_blank">
-                      <img src="/assets/images/vagrant.png" alt="kubernetes" width="100%" style="min-width:300px;max-width:300px;"/>
+                    <a href="https://www.vaultproject.io/docs" target="_blank">
+                      <img src="/assets/images/vault.png" alt="vault" width="100%" style="min-width:300px;max-width:350px;"/>
                     </a>
                   </div>
                   <div id="list">
@@ -59,16 +59,10 @@
                       
                   
                       
-                  
-                      
-                  
-                      
-                  
-                      
-                      <a class="list-main" href="/devops/vagrant">vagrant</a>
+                      <a class="list-main" href="/security/vault">vault</a>
                       <ul style="padding:0;">
                       
-                        <li style="list-style: none;"><a href="/devops/vagrant/command&code">command & code</a></li>
+                        <li style="list-style: none;"><a href="/security/vault/install">install</a></li>
                       
                       </ul>
                     </div>
@@ -81,148 +75,58 @@
                   
                       
                   
+                      
+                  
+                      
+                  
+                      
+                  
                 </header>
                 <hr/>
-                <p>기본 유저, 패스워드<br />
-user : vagrant<br />
-password : vagrant<br />
-<br />
-user: root<br />
-password: vagrant<br /></p>
+                <h2 id="install">Install</h2>
 
-<p>기본적으로 호스트(vagrant ssh-config)의 공개키를 생성한 가상머신에서 가지고 있기때문에(/home/vagrant/.ssh/authorized_keys) 이를 삭제하지 않도록 한다.</p>
+<p>리눅스 서버에 주로 설치되고 사용되는 vault 는 다른 서비스와 마찬가지로 여러가지 설치 방법을 지원한다.</p>
+<ul>
+  <li>패키지 관리자를 통해 다운받아 설치</li>
+  <li>미리 빌드된 패키지를 다운받아 설치</li>
+  <li>바이너리 소스를 직접 빌드하여 설치</li>
+</ul>
+
+<p>리눅스 배포판에서 주로 사용되는 패키지 관리자를 통해 설치하는 방법은 손쉽다는 장점이 있지만 최신 버전을 지원안할 가능성이 높다.<br />
+미리 빌드된 패키지를 다운받아 설치하는 방법은 간단하지만 세부적인 세팅은 이미 빌드가 되어있기에 어렵다는 단점이 있다.<br />
+바이너리 소스를 직접 빌드하여 설치하는 방법은 모든 코드에 대한 신뢰성을 가질 수 있다는 장점이 있지만,<br /> 개인적으로 nginx처럼 빌드 이전에 여러 옵션을 구성할 수 있는 경우가 아니라면 이 정도까지는 크게 고려하지 않아도 될 듯 싶다.<br /></p>
 
 <hr />
 
-<p><strong>초기 세팅</strong></p>
+<h3 id="패키지-관리자를-통한-방법">패키지 관리자를 통한 방법</h3>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>vagrant init
+<p>명령어가 안될 때는 <a href="https://learn.hashicorp.com/tutorials/vault/getting-started-install?in=vault/getting-started">이 곳</a>을 참고</p>
+
+<p>Ubuntu/Debian</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>curl <span class="nt">-fsSL</span> https://apt.releases.hashicorp.com/gpg | <span class="nb">sudo </span>apt-key add -
+<span class="nv">$ </span><span class="nb">sudo </span>apt-add-repository <span class="s2">"deb [arch=amd64] https://apt.releases.hashicorp.com </span><span class="si">$(</span>lsb_release <span class="nt">-cs</span><span class="si">)</span><span class="s2"> main"</span>
+<span class="nv">$ </span><span class="nb">sudo </span>apt-get update <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>apt-get <span class="nb">install </span>vault
+</code></pre></div></div>
+
+<p>CentOS/RHEL</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>yum <span class="nb">install</span> <span class="nt">-y</span> yum-utils
+<span class="nv">$ </span><span class="nb">sudo </span>yum-config-manager <span class="nt">--add-repo</span> https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+<span class="nv">$ </span><span class="nb">sudo </span>yum <span class="nt">-y</span> <span class="nb">install </span>vault
 </code></pre></div></div>
 
 <hr />
 
-<p><strong>박스 관련 명령어</strong></p>
+<h3 id="미리-빌드된-패키지를-다운받아-설치하는-방법">미리 빌드된 패키지를 다운받아 설치하는 방법</h3>
 
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 조회</span>
-<span class="nv">$ </span>vagrant box list
+<p>최신 버전을 사용하고 싶다면 <a href="https://www.vaultproject.io/downloads">이 곳</a>을 참고</p>
 
-<span class="c"># 추가</span>
-<span class="nv">$ </span>vagrant box add bento/ubuntu-18.04
-
-<span class="c"># 이름 지정 추가</span>
-<span class="nv">$ </span>vagrant box add centos_private  https://github.com/tommy-muehle/puppet-vagrant-boxes/releases/download/1.0.0/centos-6.6-x86_64.box
-
-<span class="c"># 삭제</span>
-<span class="nv">$ </span>vagrant box remove <span class="o">[</span>name]
-</code></pre></div></div>
-<hr />
-
-<p><strong>가상머신 관련 명령어</strong></p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 조회</span>
-<span class="nv">$ </span>vagrant status <span class="o">[</span>name|id]
-<span class="nv">$ </span>vagrant global-status
-
-<span class="c"># 실행 (실행 시 박스가 없으면 자동으로 다운로드 받는다)</span>
-<span class="nv">$ </span>vagrant up <span class="o">[</span>name|id] <span class="o">[</span><span class="nt">--color</span><span class="o">]</span>
-
-<span class="c"># 접속</span>
-<span class="nv">$ </span>vagrant ssh <span class="o">[</span>name|id] <span class="o">[</span><span class="nt">--extra_ssh_args</span><span class="o">]</span>
-
-<span class="c"># 종료</span>
-<span class="nv">$ </span>vagrant halt <span class="o">[</span>name|id]
-<span class="nv">$ </span>vagrant halting <span class="o">[</span>name|id]
-
-<span class="c"># 세팅 적용 (ex: 네트워크 설정)</span>
-<span class="nv">$ </span>vagrant reload <span class="o">[</span>name|id]
-
-<span class="c"># 프로비저닝 적용</span>
-<span class="nv">$ </span>vagrant provision <span class="o">[</span>vm-name] <span class="o">[</span><span class="nt">--color</span><span class="o">]</span>
-
-<span class="c"># 삭제</span>
-<span class="nv">$ </span>vagrant destroy
-<span class="nv">$ </span>vagrant destory <span class="nt">--force</span>
-<span class="nv">$ </span>vagrant destory <span class="nt">--parallel</span>
-
-<span class="c"># 현재 실행 상태 저장,종료(디스크와 램을 사용하고 있는 상태로 종료)</span>
-<span class="nv">$ </span>vagrant <span class="nb">suspend</span> <span class="o">[</span>name|id]
-
-<span class="c"># suspend 해제 (vagrant up 역시 가능)</span>
-<span class="nv">$ </span>vagrant resume <span class="o">[</span>name|id]
-
-<span class="c"># ssh-config 조회(network forwarded port 설정되있어야함)</span>
-<span class="nv">$ </span>vagrant ssh-config
-
-<span class="c"># 스냅샷 조회</span>
-<span class="nv">$ </span>vagrant snapshot list
-
-<span class="c"># 스냅샷 저장</span>
-<span class="nv">$ </span>vagrant snapshot save <span class="o">[</span>vm-name] <span class="o">[</span>name]
-
-<span class="c"># 스냅샷 복원</span>
-<span class="nv">$ </span>vagrant snapshot restore <span class="o">[</span>vm-name] <span class="o">[</span>name]
-
-<span class="c"># 스냅샷 삭제</span>
-<span class="nv">$ </span>vagrant snapshot delete <span class="o">[</span>vm-name] <span class="o">[</span>name]
-</code></pre></div></div>
-<hr />
-
-<p><strong>Share</strong></p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Vagrantfile 공유</span>
-<span class="nv">$ </span>vagrant login vagrant share
-</code></pre></div></div>
-<hr />
-
-<p><strong>Providers</strong></p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># default provider 변경</span>
-<span class="nv">$ </span>vagrant up –provider<span class="o">=</span>vmware_fusion vagrant up –provider<span class="o">=</span>aws
-</code></pre></div></div>
-<hr />
-
-<p><strong>Networking</strong></p>
-
-<div class="language-rb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Vagrant</span><span class="p">.</span><span class="nf">configure</span><span class="p">(</span><span class="s2">"2"</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
-  <span class="n">config</span><span class="p">.</span><span class="nf">vm</span><span class="p">.</span><span class="nf">box</span> <span class="o">=</span> <span class="s2">"hashicorp/precise32"</span>
-  <span class="n">config</span><span class="p">.</span><span class="nf">vm</span><span class="p">.</span><span class="nf">provision</span> <span class="ss">:shell</span><span class="p">,</span> <span class="ss">path: </span><span class="s2">"bootstrap.sh"</span>
-  <span class="c1"># 호스트의 4567 를 게스트 80으로 연결</span>
-  <span class="c1"># 브라우져에서 127.0.0.1:4567 연결하면</span>
-  <span class="c1"># 호스트의 apache 80번 포트로 연결된다.</span>
-  <span class="n">config</span><span class="p">.</span><span class="nf">vm</span><span class="p">.</span><span class="nf">network</span> <span class="ss">:forwarded_port</span><span class="p">,</span> <span class="ss">host: </span><span class="mi">4567</span><span class="p">,</span> <span class="ss">guest: </span><span class="mi">80</span>
-<span class="k">end</span>
-</code></pre></div></div>
-<hr />
-
-<p><strong>Plugin</strong></p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>vagrant plugin <span class="nb">install</span>
-<span class="nv">$ </span>vagrant plugin license
-<span class="nv">$ </span>vagrant plugin list
-<span class="nv">$ </span>vagrant plugin uninstall
-<span class="nv">$ </span>vagrant plugin update
-</code></pre></div></div>
-<hr />
-
-<p><strong>Etc</strong></p>
-
-<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 최신 업데이트 된 박스들 조회</span>
-<span class="nv">$ </span>vagrant box outdated
-
-<span class="c"># 박스 삭제(address)</span>
-<span class="nv">$ </span>vagrant remove &lt;address&gt;
-
-<span class="c"># 현재 실행중인 virtualbox 를 재사용 가능한 box로 만든다</span>
-<span class="nv">$ </span>vagrant package
-
-<span class="nv">$ </span>vagrant update
-<span class="nv">$ </span>vagrant repackage
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>wget https://releases.hashicorp.com/vault/1.7.0/vault_1.7.0_linux_amd64.zip
+<span class="nv">$ </span><span class="nb">sudo </span>unzip vault_1.7.0_linux_amd64.zip
+<span class="nv">$ </span><span class="nb">sudo mv </span>vault /usr/bin/
 </code></pre></div></div>
 
 <hr />
 
-<p><strong>참고 사항</strong><br />
-export VAGRANT_FORCE_COLOR=true 하거나 환경변수 등록하면 –color 안해도 적용됨</p>
 
               </div>
           </div>
