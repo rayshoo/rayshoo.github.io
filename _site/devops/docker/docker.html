@@ -211,6 +211,20 @@ ctrl+p ctrl+q
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker rename <span class="o">[</span>original name] <span class="o">[</span>new name]
 </code></pre></div></div>
 
+<p><strong>네트워크 인터페이스 마스커레이드</strong></p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 외부로 인터넷이 되는 인터페이스가 따로 있을경우 해당 인터페이스에 마스커레이드를 해준다</span>
+<span class="nv">$ </span>vi /etc/sysctl.conf
+<span class="c">###############################</span>
+<span class="c"># sysctl.conf</span>
+net.ipv4.ip_forward <span class="o">=</span> 1
+<span class="c">###############################</span>
+<span class="nv">$ </span><span class="nb">echo </span>1 <span class="o">&gt;</span> /proc/sys/net/ipv4/ip_forward
+<span class="c"># 외부 인터넷으로 연결되는 인터페이스가 eth0 이라고 했을 경우</span>
+<span class="nv">$ </span>iptables <span class="nt">-t</span> nat <span class="nt">-A</span> POSTROUTING <span class="nt">-o</span> eth0 <span class="nt">-j</span> MASQUERADE
+<span class="nv">$ </span>iptables <span class="nt">-A</span> FORWARD <span class="nt">-o</span> eth0 <span class="nt">-j</span> ACCEPT
+<span class="nv">$ </span>iptables <span class="nt">-A</span> FORWARD <span class="nt">-i</span> eth0 <span class="nt">-j</span> ACCEPT
+</code></pre></div></div>
+
               </div>
           </div>
           <!-- Sidebar -->

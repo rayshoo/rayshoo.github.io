@@ -62,6 +62,11 @@ header.main #list ul {
   background-size: cover;
   background-repeat: no-repeat;
 }
+a.image:hover .bookmark-image,
+a.image:focus .bookmark-image {
+  transform: scale(1.075);
+  transition: transform .2s ease;
+}
 
 #sidebar > .inner > * {
   padding : 0 0 2.5em 0;
