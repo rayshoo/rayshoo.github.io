@@ -1,4 +1,4 @@
 ---
-layout: windows
+layout: os/windows
 permalink: /os/windows
 ---

@@ -1,4 +1,4 @@
 ---
-layout: serverspec
+layout: devops/serverspec
 permalink: /devops/serverspec
 ---

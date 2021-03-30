@@ -50,7 +50,7 @@
                 <header class="main">
                   <div>
                     <a href="https://www.vaultproject.io/docs" target="_blank">
-                      <img src="/assets/images/vault.png" alt="vault" width="100%" style="min-width:300px;max-width:350px;"/>
+                      <img src="/assets/images/security/vault.png" alt="vault" width="100%" style="min-width:300px;max-width:350px;"/>
                     </a>
                   </div>
                   <div id="list">
@@ -92,15 +92,11 @@
   <li>바이너리 소스를 직접 빌드하여 설치</li>
 </ul>
 
-<p>리눅스 배포판에서 주로 사용되는 패키지 관리자를 통해 설치하는 방법은 손쉽다는 장점이 있지만 최신 버전을 지원안할 가능성이 높다.<br />
-미리 빌드된 패키지를 다운받아 설치하는 방법은 간단하지만 세부적인 세팅은 이미 빌드가 되어있기에 어렵다는 단점이 있다.<br />
-바이너리 소스를 직접 빌드하여 설치하는 방법은 모든 코드에 대한 신뢰성을 가질 수 있다는 장점이 있지만,<br /> 개인적으로 nginx처럼 빌드 이전에 여러 옵션을 구성할 수 있는 경우가 아니라면 이 정도까지는 크게 고려하지 않아도 될 듯 싶다.<br /></p>
-
 <hr />
 
 <h3 id="패키지-관리자를-통한-방법">패키지 관리자를 통한 방법</h3>
-
-<p>명령어가 안될 때는 <a href="https://learn.hashicorp.com/tutorials/vault/getting-started-install?in=vault/getting-started">이 곳</a>을 참고</p>
+<p>가장 손쉽다는 장점이 있지만 최신 버전을 지원안할 가능성이 높다.<br />
+명령어가 안될 때는 <a href="https://learn.hashicorp.com/tutorials/vault/getting-started-install?in=vault/getting-started">이 곳</a>을 참고</p>
 
 <p>Ubuntu/Debian</p>
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>curl <span class="nt">-fsSL</span> https://apt.releases.hashicorp.com/gpg | <span class="nb">sudo </span>apt-key add -
@@ -117,8 +113,8 @@
 <hr />
 
 <h3 id="미리-빌드된-패키지를-다운받아-설치하는-방법">미리 빌드된 패키지를 다운받아 설치하는 방법</h3>
-
-<p>최신 버전을 사용하고 싶다면 <a href="https://www.vaultproject.io/downloads">이 곳</a>을 참고</p>
+<p>간단하면서도 공식 홈페이지에서 제공하는 것을 직접 사용하는 것이기에 신뢰성도 보장 받아 가장 추천하는 방법이다.<br />
+최신 버전을 사용하고 싶다면 <a href="https://www.vaultproject.io/downloads">이 곳</a>을 참고</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>wget https://releases.hashicorp.com/vault/1.7.0/vault_1.7.0_linux_amd64.zip
 <span class="nv">$ </span><span class="nb">sudo </span>unzip vault_1.7.0_linux_amd64.zip
@@ -129,8 +125,9 @@
 
 <h3 id="바이너리-소스를-직접-빌드하여-설치하는-방법">바이너리 소스를 직접 빌드하여 설치하는 방법</h3>
 
-<p>vault 는 go 언어로 작성되있기때문에 go언어 설치가 사전에 필요하다.
-git version 이 낮으면 빌드가 안되는 이슈가 있었기에 가급적 최신 버전을 설치해주자.
+<p>모든 코드에 대한 신뢰성을 가질 수 있다는 장점이 있지만, 개인적으로 nginx처럼 빌드 이전에 여러 옵션을 구성할 수 있는 경우가 아니라면 이 정도까지는 크게 고려하지 않아도 될 듯 싶다.<br />
+vault 는 go 언어로 작성되있기때문에 go언어 설치가 사전에 필요하다.
+git version 이 낮으면 빌드가 안되는 이슈가 있었기에 가급적 최신 버전을 설치해주자.<br />
 설치 과정은 대략 아래와 같다. 자세한 방법은 <a href="https://www.vaultproject.io/docs/install#compiling-from-source">이 곳</a>을 참고. 빌드 시간이 제법 오래 걸린다.</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">mkdir</span> <span class="nt">-p</span> <span class="nv">$HOME</span>/project/go
@@ -209,30 +206,34 @@ git version 이 낮으면 빌드가 안되는 이슈가 있었기에 가급적 �
         </nav>
 
       <!-- Section -->
-        <section>
+        <section id="lecture">
           <header class="major">
-            <h2>Bookmark</h2>
+            <h2>Lecture</h2>
           </header>
           <div class="mini-posts">
             <article>
-              <a href="https://academy.dream-coding.com/" target="_blank" class="image"><img src="/assets/images/dreamcoding.png" alt="youtube"/></a>
+              <a href="https://www.fastcampus.co.kr/" target="_blank" class="image"><img src="/assets/images/lecture/fastcampus.png" alt="fastcampus"/></a>
               <!-- <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p> -->
             </article>
             <article>
-              <a href="https://www.fastcampus.co.kr/" target="_blank" class="image"><img src="/assets/images/fastcampus.png" alt="fastcampus"/></a>
+              <a href="https://www.inflearn.com/" target="_blank" class="image"><img src="/assets/images/lecture/inflearn.png" alt="inflearn"/></a>
               <!-- <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p> -->
             </article>
             <article>
-              <a href="https://www.inflearn.com/" target="_blank" class="image"><img src="/assets/images/inflearn.png" alt="inflearn"/></a>
+              <a href="https://www.youtube.com/" target="_blank" class="image"><img src="/assets/images/lecture/youtube.jpg" alt="youtube"/></a>
               <!-- <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p> -->
             </article>
             <article>
-              <a href="https://www.youtube.com/" target="_blank" class="image"><img src="/assets/images/youtube.jpg" alt="youtube"/></a>
+              <a href="https://academy.dream-coding.com/" target="_blank" class="image"><img src="/assets/images/lecture/dreamcoding.png" alt="youtube"/></a>
+              <!-- <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p> -->
+            </article>
+            <article>
+              <a href="https://www.udemy.com/" target="_blank" class="image"><img src="/assets/images/lecture/udemy.png" alt="udemy"/></a>
               <!-- <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p> -->
             </article>
           </div>
           <!-- <ul class="actions">
-            <li><a href="#" class="button">More</a></li>
+            <li><a href="javascript:void(0);" class="button">More</a></li>
           </ul> -->
         </section>
 
@@ -241,18 +242,18 @@ git version 이 낮으면 빌드가 안되는 이슈가 있었기에 가급적 �
           <header class="major">
             <h2>Get in touch</h2>
           </header>
-          <p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+          <!-- <p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p> -->
           <ul class="contact">
-            <li class="fa-envelope-o"><a href="#">fire@dragonz.dev</a></li>
-            <li class="fa-phone"></li><br/>
-            <li class="fa-slack">rayshoo92@gmail.com</li><br/>
+            <li class="fa-envelope-o"><a href="mailto:fire@dragonz.dev">fire@dragonz.dev</a></li>
+            <!-- <li class="fa-phone"></li><br/> -->
+            <li class="fa-slack"><a href="mailto:rayshoo92@gmail.com">rayshoo92@gmail.com</a></li><br/>
             <!-- <li class="fa-home">, Republic of Korea</li> -->
           </ul>
         </section>
 
       <!-- Footer -->
         <footer id="footer">
-          <p class="copyright">&copy; Terminal. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>. Jekyll integration: <a href="https://andrewbanchi.ch">Andrew Banchich</a>.</p>
+          <p class="copyright">&copy; Terminal. All rights reserved. Design: <a href="https://html5up.net">HTML5 UP</a>. Jekyll integration: <a href="https://github.com/andrewbanchich">Andrew Banchich</a>.</p>
         </footer>
 
     </div>

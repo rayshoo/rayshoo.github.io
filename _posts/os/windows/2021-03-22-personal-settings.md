@@ -1,7 +1,7 @@
 ---
 title: personal settings
 categories: [os, windows]
-layout: windows
+layout: os/windows
 ---
 
 ## <span>1. </span>[wsl2](https://docs.microsoft.com/ko-kr/windows/wsl/install-win10), [windows terminal](https://docs.microsoft.com/ko-kr/windows/terminal/)

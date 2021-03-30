@@ -1,4 +1,4 @@
 ---
-layout: vault
+layout: security/vault
 permalink: /security/vault
 ---

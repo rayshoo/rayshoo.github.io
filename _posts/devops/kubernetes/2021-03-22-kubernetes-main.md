@@ -1,5 +1,5 @@
 ---
-layout: kubernetes
+layout: devops/kubernetes
 permalink: /devops/kubernetes
 ---
 

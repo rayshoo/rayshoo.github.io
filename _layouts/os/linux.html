@@ -18,15 +18,15 @@
                 <section>
                 <header class="main">
                   <div>
-                    <a href="https://www.jenkins.io/doc/book/" target="_blank">
-                      <img src="/assets/images/jenkins.svg" alt="jenkins" width="100%" style="min-width:300px;max-width:350px;"/>
+                    <a href="https://hamonikr.org/" target="_blank">
+                      <img src="/assets/images/os/linux.png" alt="linux" width="100%" style="min-width:300px;max-width:350px;"/>
                     </a>
                   </div>
                   <div id="list">
                     <div>
                       {% for category in site.categories %}
-                      {% if category[0] == 'jenkins' %}
-                      <a class="list-main" href="/devops/jenkins">{{ category[0] }}</a>
+                      {% if category[0] == 'linux' %}
+                      <a class="list-main" href="/os/linux">{{ category[0] }}</a>
                       <ul style="padding:0;">
                       {% for post in category[1] %}
                         <li style="list-style: none;"><a href="{{ post.url }}">{{ post.title }}</a></li>

@@ -1,4 +1,4 @@
 ---
-layout: jenkins
+layout: devops/jenkins
 permalink: /devops/jenkins
 ---

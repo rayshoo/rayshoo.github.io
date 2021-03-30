@@ -32,6 +32,9 @@ header.main #list a.list-main {
 header.main #list a {
   color: #000;
 }
+header.main #list ul {
+  margin: 0;
+}
 @media ( max-width: 800px ) {
   header.main #list{
     border: none;
@@ -51,4 +54,15 @@ header.main #list a {
     border-style: solid;
     text-align: left;
   }
+}
+.bookmark-image {
+  display: block;
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#sidebar > .inner > * {
+  padding : 0 0 2.5em 0;
 }

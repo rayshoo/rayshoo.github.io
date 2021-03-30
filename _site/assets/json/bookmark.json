@@ -1,0 +1,26 @@
+[
+  {
+    "url" : "https://www.lesstif.com/ws/firewalld-43844015.html",
+    "image" : "/assets/images/bookmark/1.png",
+    "image_url" : "/assets/images/bookmark/1.png",
+    "title" : "firewalld 방화벽 사용",
+    "writer" : "web service hardening",
+    "content" : "iptables 는 숙련된 관리자가 아니면 사용이 어려운 단점이 있었는데 이런 문제를 해결하고자 RHEL/CentOS 7 부터는 방화벽을 firewalld 라는 데몬으로 교체하였고 이에 따라 사용자 레벨의 프로그램은 iptables 명령어 대신 명령행에서는 firewall-cmd , GUI 환경에서는 firewall-config 를 사용하게 되었습니다."
+  },
+  {
+    "url" : "https://blog.alyac.co.kr/3659",
+    "image" : "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbhtiqT%2Fbtq0Y4oUYXN%2FxKe3ZADYa0KUOvDdbEPnp0%2Fimg.jpg",
+    "image_url" : "https://blog.alyac.co.kr/3659",
+    "title" : "OpenSSL, 치명적인 서비스 거부 및 인증서 검증 취약점 수정",
+    "writer" : "알약4",
+    "content" : "OpenSSL 프로젝트가 OpenSSL 제품에 숨어있는 심각도 높은 취약점 2개인 CVE-2021-3449, CVE-2021-3450에 대한 보안 권고를 발행했습니다. OpenSSL은 보안 통신을 설정해야 하는 네트워킹 애플리케이션 및 서버를 빌드하는데 흔히 사용되는 소프트웨어 라이브러리입니다."
+  },
+  {
+  "url" : "https://www.boannews.com/media/view.asp?idx=96026",
+  "image" : "http://www.boannews.com/media/upFiles2/2021/03/228945200_7889.jpg",
+  "image_url" : "https://www.boannews.com/media/view.asp?idx=96026",
+  "title" : "또 다른 대형 공급망 공격 될 뻔한 PHP 깃 서버 침해 사건",
+  "writer" : "문가용 기자",
+  "content" : "널리 사용되는 프로그래밍 언어인 PHP의 깃 서버에 누군가 침투했다. 그리고 악성 백도어를 심어서 PHP 개발자들이 악성 서비스 및 앱을 개발하도록 유도했다. 다행히 재빨리 발견되어 조치가 취해졌지만 아직 사건에 대해 자세히 밝혀진 내용은 없다. PHP는 서버를 깃허브로 옮겼다."
+  }
+]

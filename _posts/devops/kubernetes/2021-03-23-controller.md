@@ -1,5 +1,5 @@
 ---
 title: controller
 categories: [devops, kubernetes]
-layout: kubernetes
+layout: devops/kubernetes
 ---

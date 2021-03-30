@@ -1,7 +1,7 @@
 ---
 title: "command & code"
 categories: [devops, vagrant]
-layout: vagrant
+layout: devops/vagrant
 ---
 
 기본 유저, 패스워드<br/>
@@ -145,4 +145,4 @@ $ vagrant repackage
 <hr/>
 
 **참고 사항**<br/>
-export VAGRANT_FORCE_COLOR=true 하거나 환경변수 등록하면 --color 안해도 적용됨
+`export VAGRANT_FORCE_COLOR=true` 하거나 환경변수 등록하면 `--color` 안해도 적용됨
