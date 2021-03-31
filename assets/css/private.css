@@ -35,9 +35,18 @@ header.main #list a {
 header.main #list ul {
   margin: 0;
 }
+
+
+
 @media ( max-width: 800px ) {
   header.main #list{
     border: none;
+  }
+  p,strong,#list > div > ul li > a {
+    font-size: .9rem;
+  }
+  code,code span {
+    font-size : .8rem;
   }
 }
 @media ( max-width: 555px ) {
@@ -65,4 +74,26 @@ header.main #list ul {
 
 #sidebar > .inner > * {
   padding : 0 0 2.5em 0;
+}
+
+.utterances {
+  max-width: none;
+  margin-left: 0;
+}
+
+.highlight {
+  border-radius: 0.375em;
+}
+
+p,strong,#list > div > ul li > a {
+  font-size: 1rem;
+}
+code,code span {
+  font-size: .9rem;
+}
+
+.image:focus .bookmark-image,
+.image:hover .bookmark-image {
+  transform : scale(1.075);
+  transition : transform ease 0.2s; 
 }
