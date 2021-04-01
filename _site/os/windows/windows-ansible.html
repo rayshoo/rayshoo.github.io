@@ -64,16 +64,32 @@
                 <section>
                 <header class="main">
                   <div>
-                    <a href="https://serverspec.org/" target="_blank">
-                      <img src="/assets/images/devops/serverspec.png" alt="serverspec" width="100%" style="min-width:300px;max-width:350px;"/>
+                    <a href="https://docs.microsoft.com/ko-kr/windows/" target="_blank">
+                      <img src="/assets/images/os/windows.png" alt="windows" width="100%" style="min-width:300px;max-width:350px;"/>
                     </a>
                   </div>
+                  <!-- <div><img src="/assets/images/windows.png" alt="windows" width="25%" style="min-width:300px;"></div> -->
                   <div id="list">
                     <div>
                       
                       
                   
                       
+                      <a class="list-main" href="/os/windows">windows</a>
+                      <ul style="padding:0;">
+                      
+                        <li style="list-style: none;"><a href="/os/windows/personal-settings">personal settings</a></li>
+                      
+                        <li style="list-style: none;"><a href="/os/windows/port-forward">port-forward</a></li>
+                      
+                        <li style="list-style: none;"><a href="/os/windows/windows-ansible">ansible</a></li>
+                      
+                        <li style="list-style: none;"><a href="/os/windows/windows-referenced">referenced</a></li>
+                      
+                      </ul>
+                    </div>
+                  </div>
+                  
                   
                       
                   
@@ -89,7 +105,89 @@
                   
                 </header>
                 <hr/>
-                
+                <h2 id="windows-ansible">windows ansible</h2>
+<p><strong>windows os 에서 ansible controller의 기능은 수행 못하지만 client의 역할은 수행 가능하다.</strong><br />
+<strong>windows 10 미만 버전에서는 <a href="https://docs.ansible.com/ansible/latest/user_guide/windows_setup.html#host-requirements">이 곳</a>을 참고</strong></p>
+
+<h3 id="1-winrmwindows-remote-management"><span>1. </span>WinRM(Windows Remote Management)</h3>
+<p>WinRM을 켜야 사용 가능</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 상태 조회</span>
+<span class="o">&gt;</span> Get-Service <span class="nt">-Name</span> winrm
+
+<span class="c"># 켜기</span>
+<span class="o">&gt;</span> <span class="nv">$url</span> <span class="o">=</span> <span class="s2">"https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1"</span>
+<span class="nv">$file</span> <span class="o">=</span> <span class="s2">"</span><span class="nv">$env</span><span class="s2">:temp</span><span class="se">\C</span><span class="s2">onfigureRemotingForAnsible.ps1"</span>
+<span class="o">(</span>New-Object <span class="nt">-TypeName</span> System.Net.WebClient<span class="o">)</span>.DownloadFile<span class="o">(</span><span class="nv">$url</span>, <span class="nv">$file</span><span class="o">)</span>
+powershell.exe <span class="nt">-ExecutionPolicy</span> ByPass <span class="nt">-File</span> <span class="nv">$file</span>
+
+<span class="c"># 상태 자세히 조회</span>
+<span class="o">&gt;</span> winrm enumerate winrm/config/Listener
+</code></pre></div></div>
+
+<h3 id="2--pywinrm"><span>2. </span> pywinrm</h3>
+<p><strong>controller 노드에서 pywinrm 설치</strong></p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>pip <span class="nb">install </span>pywinrm
+<span class="nv">$ </span><span class="nb">sudo </span>pip3 <span class="nb">install </span>pywinrm
+</code></pre></div></div>
+
+<p><strong>hosts파일 작성</strong></p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># hosts.ini</span>
+<span class="o">[</span>win]
+192.168.55.1 <span class="nv">ansible_host</span><span class="o">=</span>192.168.55.1
+
+<span class="o">[</span>win:vars]
+<span class="nv">ansible_user</span><span class="o">=[</span>windows 계정]
+<span class="nv">ansible_password</span><span class="o">=[</span>windows 계정 비밀번호]
+<span class="nv">ansible_connection</span><span class="o">=</span>winrm
+<span class="nv">ansible_winrm_server_cert_validation</span><span class="o">=</span>ignore
+
+<span class="o">[</span>windows:children]
+win
+</code></pre></div></div>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ping.yaml</span>
+<span class="nn">---</span>
+<span class="c1"># This playbook uses the win_ping module to test connectivity to Windows hosts</span>
+<span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Ping</span>
+  <span class="na">hosts</span><span class="pi">:</span> <span class="s">windows</span>
+
+  <span class="na">tasks</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">ping</span>
+    <span class="na">win_ping</span><span class="pi">:</span>
+
+<span class="c1"># whoami.yaml</span>
+<span class="nn">---</span>
+<span class="c1"># This playbook uses the win_ping module to test connectivity to Windows hosts</span>
+<span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Whoami</span>
+  <span class="na">hosts</span><span class="pi">:</span> <span class="s">windows</span>
+  <span class="na">tasks</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">whoami</span>
+      <span class="na">win_shell</span><span class="pi">:</span> <span class="s">whoami</span>
+      <span class="na">register</span><span class="pi">:</span> <span class="s">me</span>
+
+    <span class="pi">-</span> <span class="na">debug</span><span class="pi">:</span>
+        <span class="na">msg</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+</code></pre></div></div>
+
+<p><strong>테스트</strong></p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># ping 대신 win_ping 모듈을 써야되는 것에 주의하자.</span>
+<span class="nv">$ </span>ansible <span class="nt">-i</span> hosts.ini win <span class="nt">-m</span> win_ping
+<span class="nv">$ </span>ansible-playbook <span class="nt">-i</span> hosts.ini ping.yaml
+<span class="nv">$ </span>ansible-playbook <span class="nt">-i</span> hosts.ini whoami.yaml
+</code></pre></div></div>
+
+<!-- 
+# WinRM listener 설정
+> $selector_set = @{
+Address = "*"
+Transport = "HTTPS"
+}
+
+> $value_set = @{
+CertificateThumbprint = "[winrm enumerate winrm/config/Listener 명령어를 입력했을 때 나오는 하단의 CertificateThumbprint 입력]"
+}
+
+> New-WSManInstance -ResourceURI "winrm/config/Listener" -SelectorSet $selector_set -ValueSet $value_set
+``` -->
 
                 <br/>
 <hr/>

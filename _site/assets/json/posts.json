@@ -5,7 +5,8 @@
   "category" : "",
   "tags"     : "",
   "url"      : "/devops/kubernetes/install",
-  "date"     : "2021-03-25 00:00:00 +0900"
+  "date"     : "2021-03-25 00:00:00 +0900",
+  "post" : "/devops/kubernetes/install"
   } ,
   
   {
@@ -13,7 +14,8 @@
   "category" : "",
   "tags"     : "",
   "url"      : "/devops/kubernetes/cluster",
-  "date"     : "2021-03-24 00:00:00 +0900"
+  "date"     : "2021-03-24 00:00:00 +0900",
+  "post" : "/devops/kubernetes/cluster"
   } ,
   
   {
@@ -21,7 +23,8 @@
   "category" : "",
   "tags"     : "",
   "url"      : "/devops/kubernetes/pod",
-  "date"     : "2021-03-23 00:00:00 +0900"
+  "date"     : "2021-03-23 00:00:00 +0900",
+  "post" : "/devops/kubernetes/pod"
   } ,
   
   {
@@ -29,7 +32,8 @@
   "category" : "",
   "tags"     : "",
   "url"      : "/devops/kubernetes/controller",
-  "date"     : "2021-03-23 00:00:00 +0900"
+  "date"     : "2021-03-23 00:00:00 +0900",
+  "post" : "/devops/kubernetes/controller"
   } ,
   
   {
@@ -37,7 +41,8 @@
   "category" : "",
   "tags"     : "",
   "url"      : "/security/vault",
-  "date"     : "2021-03-22 00:00:00 +0900"
+  "date"     : "2021-03-22 00:00:00 +0900",
+  "post" : "/security/vault-main"
   } ,
   
   {
@@ -45,7 +50,8 @@
   "category" : "",
   "tags"     : "",
   "url"      : "/os/windows",
-  "date"     : "2021-03-22 00:00:00 +0900"
+  "date"     : "2021-03-22 00:00:00 +0900",
+  "post" : "/os/windows-main"
   } ,
   
   {
@@ -53,7 +59,8 @@
   "category" : "",
   "tags"     : "",
   "url"      : "/os/windows/personal-settings",
-  "date"     : "2021-03-22 00:00:00 +0900"
+  "date"     : "2021-03-22 00:00:00 +0900",
+  "post" : "/os/windows/personal-settings"
   } ,
   
   {
@@ -61,7 +68,8 @@
   "category" : "",
   "tags"     : "",
   "url"      : "/os/linux",
-  "date"     : "2021-03-22 00:00:00 +0900"
+  "date"     : "2021-03-22 00:00:00 +0900",
+  "post" : "/os/linux"
   } ,
   
   {
@@ -69,7 +77,8 @@
   "category" : "",
   "tags"     : "",
   "url"      : "/language/ruby",
-  "date"     : "2021-03-22 00:00:00 +0900"
+  "date"     : "2021-03-22 00:00:00 +0900",
+  "post" : "/language/ruby"
   } ,
   
   {
@@ -77,7 +86,8 @@
   "category" : "",
   "tags"     : "",
   "url"      : "/devops/vagrant",
-  "date"     : "2021-03-22 00:00:00 +0900"
+  "date"     : "2021-03-22 00:00:00 +0900",
+  "post" : "/devops/vagrant-main"
   } ,
   
   {
@@ -85,7 +95,8 @@
   "category" : "",
   "tags"     : "",
   "url"      : "/devops/vagrant/command&code",
-  "date"     : "2021-03-22 00:00:00 +0900"
+  "date"     : "2021-03-22 00:00:00 +0900",
+  "post" : "/devops/vagrant/command&code"
   } ,
   
   {
@@ -93,7 +104,8 @@
   "category" : "",
   "tags"     : "",
   "url"      : "/devops/serverspec",
-  "date"     : "2021-03-22 00:00:00 +0900"
+  "date"     : "2021-03-22 00:00:00 +0900",
+  "post" : "/devops/serverspec-main"
   } ,
   
   {
@@ -101,7 +113,8 @@
   "category" : "",
   "tags"     : "",
   "url"      : "/devops/kubernetes",
-  "date"     : "2021-03-22 00:00:00 +0900"
+  "date"     : "2021-03-22 00:00:00 +0900",
+  "post" : "/devops/kubernetes-main"
   } ,
   
   {
@@ -109,7 +122,8 @@
   "category" : "",
   "tags"     : "",
   "url"      : "/devops/jenkins",
-  "date"     : "2021-03-22 00:00:00 +0900"
+  "date"     : "2021-03-22 00:00:00 +0900",
+  "post" : "/devops/jenkins-main"
   } ,
   
   {
@@ -117,7 +131,8 @@
   "category" : "",
   "tags"     : "",
   "url"      : "/devops/docker/docker",
-  "date"     : "2021-03-22 00:00:00 +0900"
+  "date"     : "2021-03-22 00:00:00 +0900",
+  "post" : "/devops/docker/docker"
   } ,
   
   {
@@ -125,7 +140,8 @@
   "category" : "",
   "tags"     : "",
   "url"      : "/devops/docker",
-  "date"     : "2021-03-22 00:00:00 +0900"
+  "date"     : "2021-03-22 00:00:00 +0900",
+  "post" : "/devops/docker-main"
   } ,
   
   {
@@ -133,7 +149,8 @@
   "category" : "",
   "tags"     : "",
   "url"      : "/devops/ansible",
-  "date"     : "2021-03-22 00:00:00 +0900"
+  "date"     : "2021-03-22 00:00:00 +0900",
+  "post" : "/devops/ansible-main"
   } ,
   
   {
@@ -141,7 +158,35 @@
   "category" : "",
   "tags"     : "",
   "url"      : "/security/vault/install",
-  "date"     : "2021-03-21 00:00:00 +0900"
+  "date"     : "2021-03-21 00:00:00 +0900",
+  "post" : "/security/vault/install"
+  } ,
+  
+  {
+  "title"    : "port-forward",
+  "category" : "",
+  "tags"     : "",
+  "url"      : "/os/windows/port-forward",
+  "date"     : "2021-03-21 00:00:00 +0900",
+  "post" : "/os/windows/port-forward"
+  } ,
+  
+  {
+  "title"    : "ansible",
+  "category" : "",
+  "tags"     : "",
+  "url"      : "/os/windows/windows-ansible",
+  "date"     : "2021-03-20 00:00:00 +0900",
+  "post" : "/os/windows/windows-ansible"
+  } ,
+  
+  {
+  "title"    : "referenced",
+  "category" : "",
+  "tags"     : "",
+  "url"      : "/os/windows/windows-referenced",
+  "date"     : "2021-03-19 00:00:00 +0900",
+  "post" : "/os/windows/windows-referenced"
   } 
   
 ]
