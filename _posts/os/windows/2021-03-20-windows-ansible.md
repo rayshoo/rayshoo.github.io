@@ -4,7 +4,7 @@ categories: [os, windows]
 layout: os/windows
 ---
 
-## windows ansible
+## ansible
 **windows os 에서 ansible controller의 기능은 수행 못하지만 client의 역할은 수행 가능하다.**<br/>
 **windows 10 미만 버전에서는 [이 곳](https://docs.ansible.com/ansible/latest/user_guide/windows_setup.html#host-requirements)을 참고**
 
