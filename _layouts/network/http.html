@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+{% include head.html %}
+<style>p {color: #000;}</style>
+<body>
+    <!-- Wrapper -->
+    <div id="wrapper">
+        <!-- Main -->
+        <div id="main">
+            <div class="inner">
+                {% include header.html %}
+                <!-- Content -->
+                <section>
+                <header class="main">
+                  <div>
+                    <a href="" target="_blank">
+                      <img src="/assets/images/network/http.png" alt="http" width="100%" style="min-width:200px;max-width:250px;"/>
+                    </a>
+                  </div>
+                  <div id="list">
+                    <div>
+                      {% for category in site.categories %}
+                      {% if category[0] == 'http' %}
+                      <a class="list-main" href="/network/http">{{ category[0] }}</a>
+                      <ul style="padding:0;">
+                      {% for post in category[1] %}
+                        <li style="list-style: none;"><a href="{{ post.url }}">{{ post.title }}</a></li>
+                      {% endfor %}
+                      </ul>
+                    </div>
+                  </div>
+                  {% endif %}
+                  {% endfor %}
+                </header>
+                <hr/>
+                {{ content }}
+                {% include comment.html %}
+              </div>
+          </div>
+          {% include sidebar.html %}
+      </div>
+      {% include footer.html %}
+</body>
+</html>
