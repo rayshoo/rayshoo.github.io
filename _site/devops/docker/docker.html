@@ -145,6 +145,7 @@
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># --name : container name</span>
 <span class="c"># -p : port-forward (여러개 사용 가능)</span>
 <span class="c"># -v : volume-mount</span>
+<span class="c"># --restart 재시작 정책 (no:default, on-failure, always, unless-stopped)</span>
 <span class="c"># -d : 백그라운드에서 실행</span>
 
 <span class="c"># nginx 예시</span>
@@ -160,6 +161,7 @@
 <span class="nt">-p</span> 3306:3306 <span class="se">\</span>
 <span class="nt">-e</span> <span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>root1! <span class="se">\</span>
 <span class="nt">-v</span> C:/mysql/:/var/lib/mysql <span class="se">\</span>
+<span class="nt">--restart</span> unless-stopped
 <span class="nt">-d</span> mysql:5.7 <span class="se">\</span>
 <span class="nt">--character-set-server</span><span class="o">=</span>utf8mb4 <span class="se">\</span>
 <span class="nt">--collation-server</span><span class="o">=</span>utf8mb4_unicode_ci
