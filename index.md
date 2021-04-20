@@ -42,7 +42,7 @@ layout: default
 <!-- Section -->
 <section>
 	<header class="major">
-		<h2>Bookmark</h2>
+		<h2><a href="bookmark">Bookmark</a></h2>
 	</header>
 	<div class="posts" id="bookmark">
 		<!-- <article>

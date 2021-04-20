@@ -82,7 +82,7 @@ var lightJekyllSearch = {
             for ( var i = 0; i < related.length; i++ ) {
                 suggestionHtml += '<li>';
                     suggestionHtml += '<a href="'+ related[i].url +'" tabindex="' + i + 2 + '">';
-                        suggestionHtml += related[i].title;
+                        suggestionHtml += related[i].url.split('/')[3] == undefined ? related[i].url.split('/')[2] : related[i].url.split('/')[3];
                     suggestionHtml += '</a>';
                 suggestionHtml += '</li>';
             }

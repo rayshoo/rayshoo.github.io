@@ -63,7 +63,14 @@ header.main #list ul {
     border-style: solid;
     text-align: left;
   }
+  #main > .inner > section {
+    padding: 0 0 1em 0;
+  }
+  #main > .inner > section > header > div {
+    margin: 1.5rem 0;
+  }
 }
+
 .bookmark-image {
   display: block;
   width: 100%;
