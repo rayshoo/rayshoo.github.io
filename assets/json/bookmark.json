@@ -30,5 +30,21 @@
   "title" : "리눅스의 유명 유틸리티에서 10년 된 취약점 패치돼",
   "writer" : "문가용 기자",
   "content" : "리눅스 생태계에서 10년 동안 한 번도 발표되지 않았던 취약점이 이번 주 발견됐다. 로컬 사용자의 권한을 관리자급으로 높여주는 것으로 미국의 CISA까지 패치를 권고하고 나섰다. 아쉽게도 패치 외에는 이 문제를 해결할 방법이 없다고 한다."
+  },
+  {
+  "url" : "https://v.kakao.com/v/20210415094333566?from=tgt",
+  "image" : "https://img2.daumcdn.net/thumb/R658x0.q70/?fname=https://t1.daumcdn.net/news/202104/15/fnnewsi/20210415094333223owkl.jpg",
+  "image_url" : "https://v.kakao.com/v/20210415094333566?from=tgt",
+  "title" : "아래아한글 파일 'HWPX'로 바뀐다",
+  "writer" : "김만기 기자",
+  "content" : "아래아한글 문서파일 확장자가 'HWP'에서 'HWPX'로 바뀐다.기계판독형인 'HWPX' 문서는 별도 처리과정 없이도 데이터의 분류·추출이 가능하다. 이를통해 빅데이터 분석과 인공지능 분야에서의 문서 활용도를 대폭 높일 수 있을 전망이다."
+  },
+  {
+  "url" : "https://chrisjune-13837.medium.com/%EC%A0%95%EA%B7%9C%EC%8B%9D-%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC-%EC%98%88%EC%A0%9C%EB%A5%BC-%ED%86%B5%ED%95%9C-cheatsheet-%EB%B2%88%EC%97%AD-61c3099cdca8",
+  "image" : "https://miro.medium.com/max/1500/0*3tkm4DTL5sBzloYO.jpg",
+  "image_url" : "/assets/images/bookmark/2.jpg",
+  "title" : "[정규식] 핵심만 모아놓은 Cheat Sheet",
+  "writer" : "chrisjune",
+  "content" : "정규식(Regular expressions, Regex 또는 Regexp)은 특정 검색 패턴(ASCII 또는 유니코드 문자의 시퀀스)에 대한 하나 이상의 일치 항목을 검색하여 텍스트에서 정보를 추출하는데 매우 유용합니다. 유효성 검사에서 문자열 파싱 및 대체, 데이터를 다른 형식으로 변환 및 웹 스크래핑에 이르기까지 다양한 응용분야가 있습니다."
   }
 ]
