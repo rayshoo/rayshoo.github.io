@@ -135,6 +135,29 @@
 <span class="nv">$ </span>kubectl get pods <span class="nt">-n</span> kube-system
 </code></pre></div></div>
 
+<p>라벨</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 라벨 지정</span>
+<span class="nv">$ </span>kubectl label pod <span class="o">[</span>pod name] <span class="o">[</span>key]<span class="o">=[</span>value]
+
+<span class="c"># 라벨 포함 조회</span>
+<span class="nv">$ </span>kubectl get pod <span class="nt">--show-labels</span>
+
+<span class="c"># 특정 라벨을 column으로 조회, 출력</span>
+<span class="nv">$ </span>kubectl get pod <span class="nt">-L</span> <span class="o">[</span>key1],[key2]...
+
+<span class="c"># 라벨 필터링 검색</span>
+<span class="nv">$ </span>kubectl get pod <span class="nt">--show-labels</span> <span class="nt">-l</span> <span class="s1">'[key]'</span>
+<span class="nv">$ </span>kubectl get pod <span class="nt">--show-labels</span> <span class="nt">-l</span> <span class="s1">'![key]'</span>
+<span class="nv">$ </span>kubectl get pod <span class="nt">--show-labels</span> <span class="nt">-l</span> <span class="s1">'[key1]=[value],[key2]=[value]'</span>
+<span class="nv">$ </span>kubectl get pod <span class="nt">--show-labels</span> <span class="nt">-l</span> <span class="s1">'![key1]=[value],[key2]=[value]'</span>
+
+<span class="c"># 라벨 수정</span>
+<span class="nv">$ </span>kubectl label pod <span class="o">[</span>pod name] <span class="o">[</span>key]<span class="o">=[</span>value] <span class="nt">--overwrite</span>
+
+<span class="c"># 라벨 삭제</span>
+<span class="nv">$ </span>kubectl label pod <span class="o">[</span>pod name] <span class="o">[</span>key]-
+</code></pre></div></div>
+
 <p>정보</p>
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 조회</span>
 <span class="nv">$ </span>kubectl describe pod <span class="o">[</span>name]

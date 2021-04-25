@@ -104,7 +104,54 @@
                   
                 </header>
                 <hr/>
-                
+                <h2 id="controller">Controller</h2>
+
+<h3 id="레플리케이션-컨트롤러"><a href="https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller/">레플리케이션 컨트롤러</a></h3>
+<ul>
+  <li>replicaset 이 나오기 전 쿠버네티스 프로젝트의 초기부터 있었던 가장 기본적인 컨트롤러</li>
+  <li>pod가 항상 실행되도록 유지하는 쿠버네티스 리소스</li>
+  <li>노드가 클러스터에서 사라지는 경우 해당 pod를 감지하고 대체 pod 생성</li>
+  <li>실행 중인 포드의 목록을 지속적으로 모니터링하고 지정한 숫자만큼의 pod가 항상 클러스터 안에서 실행되도록 관리</li>
+</ul>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 조회</span>
+<span class="nv">$ </span>kubectl get rc
+
+<span class="c"># 정보 확인</span>
+<span class="nv">$ </span>kubectl describe rc <span class="o">[</span>rc name]
+
+<span class="c"># 설정 조회, 수정</span>
+<span class="nv">$ </span>kubectl edit rc <span class="o">[</span>rc name]
+
+<span class="c"># 레플리카 숫자 변경</span>
+<span class="nv">$ </span>kubectl scale rc <span class="o">[</span>rc name] <span class="nt">--replicas</span><span class="o">=[</span>number]
+
+<span class="c"># 삭제</span>
+<span class="nv">$ </span>kubectl delete rc <span class="o">[</span>rc name]
+
+<span class="c"># 파드는 남기고 삭제(드물게 쓰임)</span>
+<span class="nv">$ </span>kubectl delete rc <span class="o">[</span>rc name] <span class="nt">--cascade</span><span class="o">=</span><span class="nb">false</span>
+</code></pre></div></div>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">v1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">ReplicationController</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">http-go</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">replicas</span><span class="pi">:</span> <span class="m">3</span>
+  <span class="na">selector</span><span class="pi">:</span>
+    <span class="na">app</span><span class="pi">:</span> <span class="s">http-go</span>
+  <span class="na">template</span><span class="pi">:</span>
+    <span class="na">metadata</span><span class="pi">:</span>
+      <span class="na">name</span><span class="pi">:</span> <span class="s">http-go</span>
+      <span class="na">labels</span><span class="pi">:</span>
+        <span class="na">app</span><span class="pi">:</span> <span class="s">http-go</span>
+    <span class="na">spec</span><span class="pi">:</span>
+      <span class="na">containers</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">http-go</span>
+        <span class="na">image</span><span class="pi">:</span> <span class="s">rayshoo/http-go</span>
+        <span class="na">ports</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="na">containerPort</span><span class="pi">:</span> <span class="m">8080</span>
+</code></pre></div></div>
 
                 <br/>
 <hr/>
